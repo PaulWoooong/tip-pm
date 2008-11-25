@@ -1,0 +1,11 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> Create Category </h2>
+	<t:form t:id="catForm"> 
+	    <t:beaneditor t:id="catEditor" object="category"/>
+	    <div class="t-beaneditor-row">
+	    <t:label for="select" >Parent Category</t:label>
+		<t:select id="select" model="categoryModels" t:value="categoryId"></t:select><br/>
+		</div>
+	<input type="submit" value="save changes"/>
+	</t:form>
+</t:layout>

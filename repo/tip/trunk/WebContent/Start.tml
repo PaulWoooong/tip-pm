@@ -1,0 +1,23 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<img src="images/pic.jpg" alt="pic description" />
+	<h2><a href="#">Check your TIP</a></h2>
+	
+	<form t:type="form" t:id="loginForm">
+		
+		<table border="0" cellspacing="0" cellpadding="0">				
+			<tr>
+				<th><t:label for="username"/></th>
+			    <td><input t:id="username"   t:type="textfield" value="username" validate="required" size="20"/></td>
+			</tr>				
+			<tr>
+				<th><t:label for="password"/></th>
+				<td><input t:id="password" t:type="PasswordField" value="password" size="20" t:validate="required,maxLength=15" /></td>
+			</tr>
+	    </table>
+	    
+		<input type="submit" value="Login" class="positive"/>
+		<br/>
+	    
+    </form>
+    	
+</t:layout>

@@ -1,0 +1,15 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> My Profile </h2>
+	 <t:if test="visit.user">
+		name : ${visit.user.username} <br/>
+		current project : 
+		
+		<t:if test="visit.user.currentProject">
+			${visit.user.currentProject.name}<br/>
+			<t:parameter name="else">
+				No Project For This User <br/>
+            </t:parameter>			
+		</t:if>
+	</t:if>
+		<br/>set default project<br/>
+</t:layout>
