@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>    
+	<session-factory>
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">org.gjt.mm.mysql.Driver</property>
+		<!-- local -->		
+		<property name="connection.url">jdbc:mysql://localhost/tip</property>
+		<property name="connection.username">tip</property>
+		<property name="connection.password"></property>
+		<!-- JDBC connection pool (use the built-in) jangan lupa di ganti saat deploy-->
+		<property name="connection.pool_size">1</property>
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<!-- Echo all executed SQL to stdout -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>		
+    </session-factory>
+		    
+</hibernate-configuration>

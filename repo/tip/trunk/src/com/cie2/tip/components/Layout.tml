@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>T.I.P</title>
+</head>
+<body>
+<div id="wrap">
+
+<div id="header"> 
+<h1><a href="#">Task.Insentive.Point</a></h1>
+<br/>
+<h2>Don't forget to tip</h2>
+</div>
+
+<div id="navigation">
+<ul>
+<li><a href="userpage">Home</a></li> 
+<li><a href="#">Page one</a></li> 
+<li><a href="#">Another page</a></li> 
+<li><a t:type="actionlink" t:id="LogOut" href="#">Log Out</a></li>
+</ul>
+</div>
+
+
+<div id="content">
+
+<div id="right">
+	<t:body/>
+</div>
+
+<div id="left">
+<div class="menutop"> </div>
+
+<div class="menumiddle"> 
+<h2>Links: </h2>
+<ul>
+<li><t:pagelink page="createTask">Add Task</t:pagelink></li>
+<li><t:pagelink page="listTask">List Task</t:pagelink></li>
+<li><t:pagelink page="myProfile">My Profile</t:pagelink></li>
+<li><t:pagelink page="easyIdSelect">Select</t:pagelink></li>
+</ul>	    
+
+<h2>Admin </h2>
+<ul>
+	<li><t:pagelink page="createUser">Create User</t:pagelink></li> 
+	<li><t:pagelink page="createCategory">Create Category</t:pagelink></li> 
+	<li><t:pagelink page="listCategory">List Category</t:pagelink></li> 
+	<li><t:pagelink page="createProject">Create Project</t:pagelink></li> 
+</ul>
+</div>
+
+<div class="menubottom"> </div>
+</div>
+
+<div style="clear:both;"> </div>
+
+</div>
+
+<div id="bottom"> </div>
+
+<div id="footer">
+&copy; Copyright 2007 by <a href="#">You</a> All rights reserved. | Design by <a href="http://www.minimalistic-design.net">Minimalistic Design</a>
+</div>
+</div>
+</body>
+</html>
