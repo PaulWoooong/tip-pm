@@ -1,5 +1,8 @@
 package com.cie2.tip.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -57,5 +60,22 @@ public class ProjectService {
 		_session.persist(project);
 		
 		return project;
+	}
+	
+	/**
+	 * @TODO kalo udah multiple project jadi salah, karena untuk project 
+	 * yang gak lagi current. Gak bakal di update entitty user tasknya 
+	 *  
+	 * @param project
+	 * @return
+	 */
+	public List getAllUser(Project project) {
+		List allUser = _session.createCriteria(User.class).add(
+				Restrictions.eq("currentProject", project)).list();
+		
+		if(allUser != null)
+			return allUser;
+		else
+			return new ArrayList();
 	}
 }

@@ -15,7 +15,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 public class User implements Serializable{
 
 	public enum AccessLevel {
-		User, Admin, DataEntry
+		Admin, User,  DataEntry
 	}
 	
 	private Long id;

@@ -12,6 +12,7 @@ import com.cie2.tip.entities.Category;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.services.ProjectService;
+import com.cie2.tip.services.TaskService;
 
 
 public class CreateTask extends CieUserPage{
@@ -27,17 +28,16 @@ public class CreateTask extends CieUserPage{
     private Session _session;
     
     
+    // services
+    
+    @Inject
+    private TaskService taskService;
+    
     @CommitAfter
     Object onSuccess()
     {    	
     	User user = getVisit().getUser();
-    	Date today = new Date();
-    	taskItem.setCreatedDate(today);
-    	taskItem.setLastChangedDate(today);
-    	taskItem.setUser(user);
-    	System.out.println("== Current Project " + user.getCurrentProject());
-    	taskItem.setProject(user.getCurrentProject());
-        _session.persist(taskItem);
+    	taskService.addTask(taskItem, user);
 
         return ListTask.class;
     }

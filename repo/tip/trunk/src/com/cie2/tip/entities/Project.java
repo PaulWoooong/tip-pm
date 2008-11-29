@@ -17,6 +17,7 @@ public class Project implements Serializable{
 	// perlu banyak version gak ? 
 	private String versions;
 	private Boolean defaultProject;
+	private Integer quorum;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +38,10 @@ public class Project implements Serializable{
 		return defaultProject;
 	}
 
+	public Integer getQuorum() {
+		return quorum;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -51,5 +56,9 @@ public class Project implements Serializable{
 
 	public void setDefaultProject(Boolean defaultProject) {
 		this.defaultProject = defaultProject;
+	}
+
+	public void setQuorum(Integer quorum) {
+		this.quorum = quorum;
 	}
 }

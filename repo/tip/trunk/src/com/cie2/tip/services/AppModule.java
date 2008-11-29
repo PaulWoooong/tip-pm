@@ -37,13 +37,13 @@ public class AppModule
 {
     public static void bind(ServiceBinder binder)
     {
-    	binder.bind(SecurityFinder.class);    	
-    	binder.bind(ProjectService.class);    	
     	binder.bind(PersonService.class);    	
+    	binder.bind(SecurityFinder.class);    	
     	binder.bind(CategoryService.class);    	
+    	binder.bind(ProjectService.class);    	
+    	binder.bind(TaskService.class);    	
     	
 //    	binder.bind(TaskDAO.class, TaskDAOImpl.class);
-        // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
         
         // Make bind() calls on the binder object to define most IoC services.
         // Use service builder methods (example below) when the implementation
@@ -51,7 +51,8 @@ public class AppModule
         // invoking the constructor.
     }
     
-    
+
+
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
     {

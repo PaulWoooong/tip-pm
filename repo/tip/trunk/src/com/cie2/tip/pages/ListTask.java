@@ -35,6 +35,13 @@ public class ListTask extends CieUserPage {
 		return session.createCriteria(TaskItem.class).list();
 	}
 
+	 void onActionFromDelete(Long id) {
+		 logger.info("Deleting Contact, With id : "  + id);
+		 Object contact = session.load(TaskItem.class, id);
+		 session.delete(contact);
+		 session.getTransaction().commit();		 
+     }
+	 	
 	public TaskItem getTaskItem() {
 		return taskItem;
 	}

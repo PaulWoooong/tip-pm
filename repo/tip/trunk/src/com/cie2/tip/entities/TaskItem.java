@@ -20,7 +20,7 @@ public class TaskItem implements Serializable{
 	}
 	
 	public enum TaskStatus {
-		Created, Available, Assigned,  Finished
+		Created, Available, Started, Finished, Returned, UnderTreshold
 	}
 	
     private Long id;

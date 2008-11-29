@@ -7,5 +7,21 @@
     		</t:pagelink>
     	</t:parameter>
     -->
+    	<!--
+    	<t:parameter name="castVoteCell">
+    		<t:pagelink page="CreateContact" context="taskItem.id">Cast Vote</t:pagelink>
+    	</t:parameter>
+ 		
+ 		<t:parameter name="nameCell">
+    		<t:pagelink page="CreateContact" context="taskItem.id">${contact.name}
+    		</t:pagelink>
+    	</t:parameter>
+    	<t:parameter name="nameHeader">
+    		MHS Name
+    	</t:parameter>
+    			<t:parameter name="castVoteCell">
+			<t:actionlink t:id="castVote" context="taskItem.id">Cast Vote</t:actionlink>
+        </t:parameter>    	
+    	-->    
     </t:grid>        
 </t:layout>

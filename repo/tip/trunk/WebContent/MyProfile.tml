@@ -11,5 +11,9 @@
             </t:parameter>			
 		</t:if>
 	</t:if>
-		<br/>set default project<br/>
+		<br/>
+		<br/>
+
+	There's a new <t:pagelink page="listnewtask"> task </t:pagelink> for you!
+	
 </t:layout>

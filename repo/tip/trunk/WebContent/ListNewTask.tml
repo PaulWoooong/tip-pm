@@ -1,0 +1,11 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	${visit.user.username}
+    <t:grid  source="taskItems" row="taskItem" pagerPosition="both" model="model">
+
+		<t:parameter name="castVoteCell">
+			<t:actionlink t:id="castVote" context="taskItem.id">Cast Vote</t:actionlink>
+        </t:parameter>    	
+
+
+    </t:grid>        
+</t:layout>
