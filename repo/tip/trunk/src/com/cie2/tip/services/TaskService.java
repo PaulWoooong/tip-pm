@@ -58,13 +58,23 @@ public class TaskService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List <TaskItem> getUserTask(User currentUser) {
+	public List <TaskItem> getUnvotedUserTask(User currentUser) {
 		return _session
 				.createQuery(
-						"select task from UserTask ut inner join ut.task as task where ut.user=?")
-				.setParameter(0, currentUser).list();
+						"select task from UserTask ut inner join ut.task as task where ut.user=? and ut.voted=?")
+				.setParameter(0, currentUser)
+				.setParameter(1, false)
+				.list();
 	}	
 	
-	public void castVote(User user) {
+	public void castVote(Long id, User user) {
+		System.out.println(" ======== Casting the vote for id " + id);
+//		_session.createQuery("update UserTask ut set ut.voted=? where ut.task.id=? and ut.user=?")
+		_session.createQuery("update UserTask ut set ut.voted=?")
+			.setParameter(0, true)
+//			.setParameter(1, id)
+//			.setParameter(2, user)
+			.executeUpdate();
+		_session.flush();
 	}
 }

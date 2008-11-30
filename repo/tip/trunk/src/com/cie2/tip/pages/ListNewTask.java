@@ -10,12 +10,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
 import org.apache.tapestry5.services.RequestGlobals;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.entities.UserTask;
 import com.cie2.tip.services.TaskService;
 
 public class ListNewTask extends CieUserPage{
@@ -43,12 +41,13 @@ public class ListNewTask extends CieUserPage{
     @Inject
     private TaskService taskService;
     
+    
 	public List<TaskItem> getTaskItems() {
 //		org.apache.tapestry5.services.Session sessionTap = _requestGlobals.getRequest().getSession(false);
 
 //		logger.info("Visit=" + sessionTap.getAttribute("aso:com.cie2.tip.Visit"));
 		User user = getVisit().getUser();
-		return taskService.getUserTask(user);
+		return taskService.getUnvotedUserTask(user);
 	}
 
 
@@ -62,10 +61,9 @@ public class ListNewTask extends CieUserPage{
 
 	 void onActionFromCastVote(Long id) {
 		 logger.info("Cast a vote ");
-		 TaskItem taskItem = (TaskItem) session.load(TaskItem.class, id);
-		 logger.info("For : " + taskItem.getTitle());
-		 session.delete(taskItem);
-		 session.getTransaction().commit();		 		 
+		 User user = getVisit().getUser();
+		 taskService.castVote(id, user);
+		 
 	 }
 
 
