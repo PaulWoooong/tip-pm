@@ -42,6 +42,7 @@ public class AppModule
     	binder.bind(CategoryService.class);    	
     	binder.bind(ProjectService.class);    	
     	binder.bind(TaskService.class);    	
+    	binder.bind(VoteManager.class);    	
     	
 //    	binder.bind(TaskDAO.class, TaskDAOImpl.class);
         

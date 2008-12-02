@@ -67,14 +67,4 @@ public class TaskService {
 				.list();
 	}	
 	
-	public void castVote(Long id, User user) {
-		System.out.println(" ======== Casting the vote for id " + id);
-//		_session.createQuery("update UserTask ut set ut.voted=? where ut.task.id=? and ut.user=?")
-		_session.createQuery("update UserTask ut set ut.voted=?")
-			.setParameter(0, true)
-//			.setParameter(1, id)
-//			.setParameter(2, user)
-			.executeUpdate();
-		_session.flush();
-	}
 }

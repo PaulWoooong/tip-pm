@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.BeanModel;
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
@@ -15,6 +16,7 @@ import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.services.TaskService;
+import com.cie2.tip.services.VoteManager;
 
 public class ListNewTask extends CieUserPage{
 
@@ -41,6 +43,8 @@ public class ListNewTask extends CieUserPage{
     @Inject
     private TaskService taskService;
     
+    @Inject 
+    private VoteManager voteManager;
     
 	public List<TaskItem> getTaskItems() {
 //		org.apache.tapestry5.services.Session sessionTap = _requestGlobals.getRequest().getSession(false);
@@ -59,10 +63,11 @@ public class ListNewTask extends CieUserPage{
     }	
 	
 
+    @CommitAfter
 	 void onActionFromCastVote(Long id) {
 		 logger.info("Cast a vote ");
 		 User user = getVisit().getUser();
-		 taskService.castVote(id, user);
+		 voteManager.castVote(id, user);
 		 
 	 }
 
