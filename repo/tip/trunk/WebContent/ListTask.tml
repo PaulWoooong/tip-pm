@@ -1,16 +1,11 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	${visit.user.username}
-    <t:grid  source="taskItems" row="taskitem" pagerPosition="both">
-    <!--
-    	<t:parameter name="nameCell">
-    		<t:pagelink page="CreateContact" context="contact.id">${contact.name}
-    		</t:pagelink>
+    <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model">
+    	<t:parameter name="takeTaskCell">
+			<t:actionlink t:id="takeTask" context="taskItem.id">Take Task</t:actionlink>
     	</t:parameter>
-    -->
+
     	<!--
-    	<t:parameter name="castVoteCell">
-    		<t:pagelink page="CreateContact" context="taskItem.id">Cast Vote</t:pagelink>
-    	</t:parameter>
  		
  		<t:parameter name="nameCell">
     		<t:pagelink page="CreateContact" context="taskItem.id">${contact.name}

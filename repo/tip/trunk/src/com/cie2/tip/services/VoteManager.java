@@ -7,35 +7,38 @@ import org.hibernate.criterion.Restrictions;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.UserTask;
+import com.cie2.tip.entities.TaskItem.TaskStatus;
 
 public class VoteManager {
 	static Logger logger = 
 		Logger.getLogger(TaskService.class.getName());
 	
 	private Session _session;
+
+	private ProjectService _projectService;
 		
-	public VoteManager(Session session) {
+	public VoteManager(Session session, ProjectService projectService) {
 		_session = session;
-	}
-	public void addVote(TaskItem taskItem, User user) {
-		taskItem.setVote(taskItem.getVote() + 1);
+		_projectService = projectService;
 	}
 	
-	public void castVote(Long id, User user) {
-		System.out.println(" ======== Casting the vote for id " + id);
+	public void castVote(Long taskId, User user) {
+		System.out.println(" ======== Casting the vote for id " + taskId);
 		_session.createQuery("update UserTask ut set ut.voted=? where ut.task.id=? and ut.user=?")
-//		_session.createQuery("update UserTask ut set ut.voted=?")
 			.setParameter(0, true)
-			.setParameter(1, id)
+			.setParameter(1, taskId)
 			.setParameter(2, user)
 			.executeUpdate();
+		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, taskId);
+		taskItem.setVote(taskItem.getVote() + 1);
+		calculateVote(taskItem, user);
 		_session.flush();
-//		UserTask ut = (UserTask) _session.createCriteria(UserTask.class)
-//			.add(Restrictions.eq("task.id", id))
-//			.add(Restrictions.eq("user", user)).uniqueResult();
-//	
-//		System.out.println(" UT Title " + ut.getTask().getTitle());
-//		ut.setVoted(true);
-//		_session.persist(ut);
+	}
+	
+	private void calculateVote(TaskItem taskItem, User user) {
+		if(taskItem.getVote() >= _projectService.getProject(user).getQuorum() &&
+				!taskItem.getTaskStatus().equals(TaskStatus.Available)) {
+			taskItem.setTaskStatus(TaskStatus.Available);
+		}
 	}
 }

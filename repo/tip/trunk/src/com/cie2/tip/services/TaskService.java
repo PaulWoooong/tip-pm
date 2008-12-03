@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
@@ -42,6 +43,7 @@ public class TaskService {
 		
 		_session.persist(taskItem);
 		
+		// add the new task for each user
 		for (Iterator iter = allUser.iterator(); iter.hasNext();) {
 			User user = (User) iter.next();
 			System.out.println("Creating user task for : " + user.getUsername());			
@@ -67,4 +69,9 @@ public class TaskService {
 				.list();
 	}	
 	
+	@SuppressWarnings("unchecked")
+	public List <TaskItem> getVotedUserTask(User currentUser) {
+		return _session.createCriteria(TaskItem.class).add(
+				Restrictions.eq("taskStatus", TaskStatus.Available)).list();
+	}
 }

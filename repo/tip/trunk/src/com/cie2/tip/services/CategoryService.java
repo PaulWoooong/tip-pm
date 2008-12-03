@@ -22,7 +22,6 @@ public class CategoryService {
 	
 	public Category findCategory(Long id) {
 		return (Category) _session.get(Category.class, id);
-//		return _em.find(Category.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -31,9 +30,6 @@ public class CategoryService {
 		List categories = _session.createCriteria(Category.class).add(
 				Restrictions.eq("project", project)).list();
 
-		return categories;
-		
-		
-//		return _em.createQuery("select p from Category p order by p.id").getResultList();
+		return categories;		
 	}
 }
