@@ -106,4 +106,9 @@ public class TaskService {
 		_session.update(taskItem);
 		_session.flush();
 	}
+
+	public void finishTask(Long id, User user) {
+		// XXX Auto-generated method stub
+		
+	}
 }

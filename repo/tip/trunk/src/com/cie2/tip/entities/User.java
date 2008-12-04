@@ -34,6 +34,9 @@ public class User implements Serializable{
 	
 	private Project currentProject;
 	
+	// kalau udah multiple project bakal gak kepake
+	private Integer point;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonVisual		
@@ -70,6 +73,9 @@ public class User implements Serializable{
 		return currentProject;
 	}
 	
+	public Integer getPoint() {
+		return point;
+	}
 
 	public void setDefaultPass(Boolean defaultPass) {
 		this.defaultPass = defaultPass;
@@ -106,6 +112,10 @@ public class User implements Serializable{
 
 	public void setCurrentProject(Project defaultProject) {
 		this.currentProject = defaultProject;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
 	}
 
 }

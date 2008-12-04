@@ -41,9 +41,16 @@ public class MyTask extends CieUserPage {
 		return taskService.getWorkedOnTask(currentUser);
 	}
 	
+	// di set ke user, tapi kalo udah multiple project. Tiap project milik user
+	// harus punya sendiri
+	public void onActionFromFinish(Long id) {
+		User user = getVisit().getUser();		
+		taskService.finishTask(id, user);
+	}
+	
     public BeanModel getModel() {
         BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
-//        model.add("takeTask", null);
+        model.add("finish", null);
         return model;
     }	
 

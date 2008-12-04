@@ -9,4 +9,5 @@ public class MyProfile extends CieUserPage{
 	private Boolean newTask;
 	
 	private List userProject;
+	
 }

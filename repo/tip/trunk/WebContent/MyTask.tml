@@ -1,5 +1,8 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	${visit.user.username}
     <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model">
+		<t:parameter name="finishCell">
+			<t:actionlink t:id="finish" context="taskItem.id">Finish</t:actionlink>
+        </t:parameter>    	
     </t:grid>        
 </t:layout>
