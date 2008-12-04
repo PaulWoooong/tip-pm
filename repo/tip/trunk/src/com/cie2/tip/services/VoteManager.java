@@ -23,7 +23,7 @@ public class VoteManager {
 	}
 	
 	public void castVote(Long taskId, User user) {
-		System.out.println(" ======== Casting the vote for id " + taskId);
+		logger.info(" ======== Casting the vote for id " + taskId);
 		_session.createQuery("update UserTask ut set ut.voted=? where ut.task.id=? and ut.user=?")
 			.setParameter(0, true)
 			.setParameter(1, taskId)

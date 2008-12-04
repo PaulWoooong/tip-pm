@@ -1,5 +1,5 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
-	${visit.user.username}
+	List Of Available Task
     <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model">
     	<t:parameter name="takeTaskCell">
 			<t:actionlink t:id="takeTask" context="taskItem.id">Take Task</t:actionlink>

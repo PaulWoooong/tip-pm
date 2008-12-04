@@ -5,7 +5,7 @@
 	-->
 	<t:form t:id="taskForm"> 
 	Category
-	    <t:beaneditor t:id="taskEditor" object="taskItem" exclude="taskStatus, taskType"/>
+	    <t:beaneditor t:id="taskEditor" object="taskItem" exclude="taskStatus, taskType, vote, point"/>
 	<input type="submit" value="save changes"/>    
 	</t:form>
 </t:layout>

@@ -12,6 +12,7 @@ import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.UserTask;
 import com.cie2.tip.entities.TaskItem.TaskStatus;
+import com.cie2.tip.entities.TaskItem.TaskType;
 
 public class TaskService {
 	static Logger logger = 
@@ -31,10 +32,12 @@ public class TaskService {
     	Date today = new Date();
     	taskItem.setCreatedDate(today);
     	taskItem.setLastChangedDate(today);
-    	taskItem.setUser(currentUser);
+    	taskItem.setCreatedBy(currentUser);
     	System.out.println("== Current Project " + currentUser.getCurrentProject().getName());
     	taskItem.setProject(currentUser.getCurrentProject());
     	taskItem.setTaskStatus(TaskStatus.Created);
+		taskItem.setTaskType(TaskType.Voted);
+		calculatePoint(taskItem);
 		
 		// for all user add task to the user task entity		
 		List allUser = _projectService.getAllUser(currentUser.getCurrentProject());
@@ -46,7 +49,6 @@ public class TaskService {
 		// add the new task for each user
 		for (Iterator iter = allUser.iterator(); iter.hasNext();) {
 			User user = (User) iter.next();
-			System.out.println("Creating user task for : " + user.getUsername());			
 			userTask = new UserTask();
 			userTask.setUser(user);
 			userTask.setTask(taskItem);
@@ -59,6 +61,16 @@ public class TaskService {
 		
 	}
 	
+	private void calculatePoint(TaskItem taskItem) {
+		if(TaskType.Voted.equals(taskItem.getTaskType()))
+				taskItem.setPoint(3);
+		else if (TaskType.Bonus.equals(taskItem.getTaskType()))
+			taskItem.setPoint(5);
+	}
+	
+	// semua list ini blom di check projectnya 
+	// gimana cara supaya projectnya gak perlu di passing ? 
+	// tapi udah default dari usernya ? 
 	@SuppressWarnings("unchecked")
 	public List <TaskItem> getUnvotedUserTask(User currentUser) {
 		return _session
@@ -72,6 +84,26 @@ public class TaskService {
 	@SuppressWarnings("unchecked")
 	public List <TaskItem> getVotedUserTask(User currentUser) {
 		return _session.createCriteria(TaskItem.class).add(
-				Restrictions.eq("taskStatus", TaskStatus.Available)).list();
+				Restrictions.eq("taskStatus", TaskStatus.Available))
+				.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<TaskItem> getWorkedOnTask(User user) {
+		return _session.createCriteria(TaskItem.class).add(
+				Restrictions.eq("taskStatus", TaskStatus.Started))
+				.add(Restrictions.eq("workBy", user))
+				.list();
+	}
+	
+	public void takeTask(Long id, User user) {
+		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, id);
+		
+		taskItem.setTaskStatus(TaskStatus.Started);
+		taskItem.setStartDate(new Date());
+		taskItem.setWorkBy(user);
+		
+		_session.update(taskItem);
+		_session.flush();
 	}
 }

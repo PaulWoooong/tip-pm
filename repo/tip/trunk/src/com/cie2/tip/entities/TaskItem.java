@@ -16,7 +16,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 public class TaskItem implements Serializable{
 
 	public enum TaskType {
-		Assigned, Proposed, Bonus
+		Voted, Assigned, Bonus
 	}
 	
 	public enum TaskStatus {
@@ -25,7 +25,9 @@ public class TaskItem implements Serializable{
 	
     private Long id;
     
-    private User user;
+    private User createdBy;
+    private User workBy;
+    private User pointAckBy;
     
     private String title;
     private String description;
@@ -48,9 +50,22 @@ public class TaskItem implements Serializable{
 
 	
     @ManyToOne(targetEntity=User.class)
-    @JoinColumn(name="USER_ID")
-	public User getUser() {
-		return user;
+    @JoinColumn(name="CREATED_BY")
+	public User getCreatedBy() {
+		return createdBy;
+	}
+    
+    @ManyToOne(targetEntity=User.class)
+    @JoinColumn(name="POINT_ACK_BY")
+	public User getPointAckBy() {
+		return pointAckBy;
+	}
+
+
+    @ManyToOne(targetEntity=User.class)
+    @JoinColumn(name="WORK_BY")
+	public User getWorkBy() {
+		return workBy;
 	}
     
 	public String getTitle() {
@@ -130,8 +145,8 @@ public class TaskItem implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setCreatedBy(User user) {
+		this.createdBy = user;
 	}
 	public void setVote(int vote) {
 		this.vote = vote;
@@ -145,6 +160,15 @@ public class TaskItem implements Serializable{
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public void setPointAckBy(User pointAckBy) {
+		this.pointAckBy = pointAckBy;
+	}
+
+
+	public void setWorkBy(User workBy) {
+		this.workBy = workBy;
 	}
 
 

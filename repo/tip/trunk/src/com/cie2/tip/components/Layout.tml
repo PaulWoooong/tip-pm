@@ -35,7 +35,9 @@
 <h2>Links: </h2>
 <ul>
 <li><t:pagelink page="createTask">Add Task</t:pagelink></li>
-<li><t:pagelink page="listTask">List Task</t:pagelink></li>
+<li><t:pagelink page="listnewtask">New Task</t:pagelink></li>
+<li><t:pagelink page="listTask">Available Task</t:pagelink></li>
+<li><t:pagelink page="myTask">My Task</t:pagelink></li>
 <li><t:pagelink page="myProfile">My Profile</t:pagelink></li>
 <li><t:pagelink page="easyIdSelect">Select</t:pagelink></li>
 </ul>	    

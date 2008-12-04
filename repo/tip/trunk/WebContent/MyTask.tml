@@ -1,0 +1,5 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	${visit.user.username}
+    <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model">
+    </t:grid>        
+</t:layout>

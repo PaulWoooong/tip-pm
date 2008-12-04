@@ -41,19 +41,19 @@ public class ListNewTask extends CieUserPage {
 		return taskService.getUnvotedUserTask(user);
 	}
 
-	public BeanModel getModel() {
-		BeanModel model = beanModelSource.create(TaskItem.class, false,
-				messages);
-		model.add("castVote", null);
-		return model;
-	}
-
 	@CommitAfter
 	void onActionFromCastVote(Long id) {
 		logger.info("Cast a vote ");
 		User user = getVisit().getUser();
 		voteManager.castVote(id, user);
 
+	}
+
+	public BeanModel getModel() {
+		BeanModel model = beanModelSource.create(TaskItem.class, false,
+				messages);
+		model.add("castVote", null);
+		return model;
 	}
 
 	public TaskItem getTaskItem() {
