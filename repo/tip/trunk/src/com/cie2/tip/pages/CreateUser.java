@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import com.cie2.tip.entities.Project;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.services.ProjectService;
+import com.cie2.tip.services.UserManagement;
 
 
 public class CreateUser {
@@ -25,16 +26,13 @@ public class CreateUser {
     private Session _session;
 
     @Inject
-    private ProjectService projectServices;
+    private UserManagement userManagement;
     
     @CommitAfter
     Object onSuccess()
     {    	
-    	Project currentProject = projectServices.getDefaultProject();
-    	logger.info("Current Project = " + currentProject.getName());
-    	user.setCurrentProject(currentProject);
-        _session.persist(user);
 
+    	userManagement.addUser(user);
         return CreateUser.class;
     }
 

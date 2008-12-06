@@ -76,7 +76,7 @@ public class Start {
 //			return ListContact.class;
 //		
 		
-		return ListTask.class;
+		return MyTask.class;
 	}
 
 }

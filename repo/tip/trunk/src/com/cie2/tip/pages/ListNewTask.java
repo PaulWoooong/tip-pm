@@ -38,7 +38,7 @@ public class ListNewTask extends CieUserPage {
 
 	public List<TaskItem> getTaskItems() {
 		User user = getVisit().getUser();
-		return taskService.getUnvotedUserTask(user);
+		return taskService.getUnvotedTask(user);
 	}
 
 	@CommitAfter

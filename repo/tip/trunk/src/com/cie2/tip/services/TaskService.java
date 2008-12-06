@@ -72,7 +72,7 @@ public class TaskService {
 	// gimana cara supaya projectnya gak perlu di passing ? 
 	// tapi udah default dari usernya ? 
 	@SuppressWarnings("unchecked")
-	public List <TaskItem> getUnvotedUserTask(User currentUser) {
+	public List <TaskItem> getUnvotedTask(User currentUser) {
 		return _session
 				.createQuery(
 						"select task from UserTask ut inner join ut.task as task where ut.user=? and ut.voted=?")
@@ -82,7 +82,7 @@ public class TaskService {
 	}	
 	
 	@SuppressWarnings("unchecked")
-	public List <TaskItem> getVotedUserTask(User currentUser) {
+	public List <TaskItem> getVotedTask(User currentUser) {
 		return _session.createCriteria(TaskItem.class).add(
 				Restrictions.eq("taskStatus", TaskStatus.Available))
 				.list();
@@ -98,9 +98,10 @@ public class TaskService {
 	
 	public void takeTask(Long id, User user) {
 		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, id);
-		
+		Date today = new Date();
 		taskItem.setTaskStatus(TaskStatus.Started);
-		taskItem.setStartDate(new Date());
+		taskItem.setStartDate(today);
+		taskItem.setLastChangedDate(today);
 		taskItem.setWorkBy(user);
 		
 		_session.update(taskItem);
@@ -108,7 +109,15 @@ public class TaskService {
 	}
 
 	public void finishTask(Long id, User user) {
-		// XXX Auto-generated method stub
+		_session.flush();
+		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, id);
 		
+		taskItem.setTaskStatus(TaskStatus.Finished);
+		taskItem.setLastChangedDate(new Date());
+		user.setPoint(user.getPoint() + taskItem.getPoint());
+		_session.update(taskItem);
+		// atau di evict dulu
+		_session.merge(user);
+		_session.flush();		
 	}
 }

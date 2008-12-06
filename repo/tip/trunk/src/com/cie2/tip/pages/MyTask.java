@@ -5,10 +5,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.BeanModel;
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
-import org.apache.tapestry5.services.RequestGlobals;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskItem;
@@ -23,9 +23,6 @@ public class MyTask extends CieUserPage {
 	@Property
 	private TaskItem taskItem;
 		
-	@Inject
-	private RequestGlobals _requestGlobals;	
-
 	@Inject
 	private BeanModelSource beanModelSource;
 
@@ -43,6 +40,7 @@ public class MyTask extends CieUserPage {
 	
 	// di set ke user, tapi kalo udah multiple project. Tiap project milik user
 	// harus punya sendiri
+	@CommitAfter
 	public void onActionFromFinish(Long id) {
 		User user = getVisit().getUser();		
 		taskService.finishTask(id, user);

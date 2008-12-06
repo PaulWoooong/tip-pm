@@ -10,6 +10,12 @@
 				No Project For This User <br/>
             </t:parameter>			
 		</t:if>
+		<br/>
+		Your Current Point : ${visit.user.point}
+		<br/>
+		You are :
+	 	<t:if test="visit.user.ableToVote" negate="true"> <em> Not </em></t:if>
+	 	Able To Vote ! 
 	</t:if>
 		<br/>
 		<br/>

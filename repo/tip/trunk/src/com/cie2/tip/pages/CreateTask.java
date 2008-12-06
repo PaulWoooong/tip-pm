@@ -39,7 +39,7 @@ public class CreateTask extends CieUserPage{
     	User user = getVisit().getUser();
     	taskService.addTask(taskItem, user);
 
-        return ListTask.class;
+        return ListNewTask.class;
     }
 
     void onActivate(Long id) {
