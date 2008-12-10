@@ -6,6 +6,9 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 import org.apache.tapestry5.services.Session;
 
+import com.cie2.tip.Visit;
+import com.cie2.tip.entities.User;
+import com.cie2.tip.entities.User.AccessLevel;
 import com.cie2.tip.pages.Start;
 
 
@@ -20,11 +23,7 @@ public class Layout {
 	private RequestGlobals _requestGlobals;
 	
 	Object onActionFromLogOut() {
-//		_logger.info(_visit.getMyLoginId() + " is logging out.");
-		Session session = _requestGlobals.getRequest().getSession(false);
-		
-//		logger.info("Logging out Visit=" + session.getAttribute("aso:com.cie2.tip.Visit"));
-		
+		Session session = _requestGlobals.getRequest().getSession(false);		
 		logger.info("Logging Out User ...");
 		
 		if (session != null) {
@@ -38,4 +37,20 @@ public class Layout {
 		
 		return Start.class;
 	}
+	
+	public Boolean isAdmin() {
+		Session session = _requestGlobals.getRequest().getSession(false);		
+		Visit visit = (Visit) session.getAttribute("aso:com.cie2.tip.Visit");
+
+		if(visit != null ) {
+			User user = visit.getUser();
+
+			if(user != null) {
+				if(AccessLevel.Admin.equals(user.getAccessLevel()))
+						return true;
+			}
+		}
+			
+		return false;
+	}	
 }

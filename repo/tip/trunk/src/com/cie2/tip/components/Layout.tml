@@ -47,11 +47,14 @@
 <li><t:pagelink page="myProfile">Reports</t:pagelink></li>
 <li><t:pagelink page="easyIdSelect">Select</t:pagelink></li>
 </ul>
-
+	 	
+<t:if test="isAdmin()"> 
 <h2>Admin </h2>
 <ul>
 	<li><t:pagelink page="admin">admin</t:pagelink></li> 
 </ul>
+</t:if>
+
 </div>
 
 <div class="menubottom"> </div>

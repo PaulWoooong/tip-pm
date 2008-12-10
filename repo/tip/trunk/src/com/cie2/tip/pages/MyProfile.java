@@ -12,10 +12,5 @@ public class MyProfile extends CieUserPage{
 	private Boolean newTask;
 	
 	private List userProject;
-	
-	
-	boolean isCondition() {
-		System.out.println("TESTING CONDITION");
-		return true;
-	}	
+		
 }
