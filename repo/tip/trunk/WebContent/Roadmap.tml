@@ -1,0 +1,17 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<table>
+		<tr>
+			<td> add category for task</td>
+		</tr>
+		<tr>
+			<td> Task Detail link </td>
+		</tr>
+		<tr>
+			<td> Task With a bonus </td>
+		</tr>
+		<tr>
+			<td> update description field </td>
+		</tr>
+		
+	</table>
+</t:layout>
