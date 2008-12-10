@@ -4,7 +4,13 @@
     <t:beaneditform submitlabel="Save Changes" object="taskitem"/>	
 	-->
 	<t:form t:id="taskForm"> 
-	Category
+	<!--
+	    <div class="t-beaneditor-row">
+	    <t:label for="select" >Parent Category</t:label>
+		<t:select id="select" model="categoryModels" t:value="categoryId"></t:select><br/>
+		</div>
+	-->
+
 	    <t:beaneditor t:id="taskEditor" object="taskItem" exclude="taskStatus, taskType, vote, point"/>
 	<input type="submit" value="save changes"/>    
 	</t:form>

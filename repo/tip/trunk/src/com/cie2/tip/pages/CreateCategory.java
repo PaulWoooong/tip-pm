@@ -58,10 +58,10 @@ public class CreateCategory  {
 	 *
 	 */
 	void onActivate() {
-		refreshPersons();
+		refreshCategory();
 	}
 
-	void refreshPersons() {
+	void refreshCategory() {
 		List<Category> categories = categoryService.findCategory(projectServices.getDefaultProject());
 		logger.info("Refresh persons size : " + categories.size());
 		categoryModels = new EasyIdSelectModel<Category>(categories, Category.class, "name", "id", _propertyAccess);
