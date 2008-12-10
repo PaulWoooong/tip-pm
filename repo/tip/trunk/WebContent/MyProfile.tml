@@ -16,10 +16,14 @@
 		You are :
 	 	<t:if test="visit.user.ableToVote" negate="true"> <em> Not </em></t:if>
 	 	Able To Vote ! 
-	</t:if>
-		<br/>
-		<br/>
+	 	<br/>
 
+		
+	 		You have ${visit.user.accesslevel} Level Access
+	 	
+	</t:if>
+		
+	<br/><br/>
 	There's a new <t:pagelink page="listnewtask"> task </t:pagelink> for you!
 	
 </t:layout>

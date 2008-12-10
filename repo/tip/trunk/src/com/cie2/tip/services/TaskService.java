@@ -75,9 +75,12 @@ public class TaskService {
 	public List <TaskItem> getUnvotedTask(User currentUser) {
 		return _session
 				.createQuery(
-						"select task from UserTask ut inner join ut.task as task where ut.user=? and ut.voted=?")
+						"select task from UserTask ut inner join ut.task as task where ut.user=?"+
+						" and ut.voted=? and (task.taskStatus=? or task.taskStatus=?)")
 				.setParameter(0, currentUser)
 				.setParameter(1, false)
+				.setParameter(2, TaskStatus.Created)
+				.setParameter(3, TaskStatus.Available)
 				.list();
 	}	
 	
@@ -93,6 +96,13 @@ public class TaskService {
 		return _session.createCriteria(TaskItem.class).add(
 				Restrictions.eq("taskStatus", TaskStatus.Started))
 				.add(Restrictions.eq("workBy", user))
+				.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<TaskItem> getFinishedTask() {
+		return _session.createCriteria(TaskItem.class).add(
+				Restrictions.eq("taskStatus", TaskStatus.Finished))
 				.list();
 	}
 	
@@ -118,6 +128,6 @@ public class TaskService {
 		_session.update(taskItem);
 		// atau di evict dulu
 		_session.merge(user);
-		_session.flush();		
+		_session.flush();	
 	}
 }

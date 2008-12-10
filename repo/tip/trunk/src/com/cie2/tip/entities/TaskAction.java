@@ -5,6 +5,6 @@ package com.cie2.tip.entities;
  * @author abangkis
  *
  */
-public class Action {
+public class TaskAction {
 
 }

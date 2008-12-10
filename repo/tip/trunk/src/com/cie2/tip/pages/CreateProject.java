@@ -8,7 +8,6 @@ import org.hibernate.Session;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.Project;
-import com.cie2.tip.entities.Project;
 import com.cie2.tip.services.ProjectService;
 
 public class CreateProject extends CieUserPage{

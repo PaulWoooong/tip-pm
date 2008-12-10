@@ -1,7 +1,5 @@
 package com.cie2.tip.pages;
 
-import java.util.Date;
-
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -11,7 +9,6 @@ import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.Category;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.services.ProjectService;
 import com.cie2.tip.services.TaskService;
 
 

@@ -13,11 +13,11 @@ public class CieAdminPage extends CieBasePage{
 		if (null == getVisit()) {
 			return Start.class;
 		}
-//		else {
-//			if(!AccessLevel.Admin.equals(getVisit().getUser().getAccessLevel())) {
-//				return Start.class;
-//			}
-//		}
+		else {
+			if(!AccessLevel.Admin.equals(getVisit().getUser().getAccessLevel())) {
+				return Start.class;
+			}
+		}
 
 		return null;
 	}

@@ -9,7 +9,6 @@ import org.apache.tapestry5.ioc.services.PropertyAccess;
 
 import com.cie2.tip.entities.Person;
 import com.cie2.tip.models.EasyIdSelectModel;
-import com.cie2.tip.models.IdSelectModel;
 import com.cie2.tip.services.PersonService;
 
 public class EasyIdSelect {

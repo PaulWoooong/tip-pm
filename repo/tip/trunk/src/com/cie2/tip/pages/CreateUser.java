@@ -6,9 +6,7 @@ import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
 
-import com.cie2.tip.entities.Project;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.services.ProjectService;
 import com.cie2.tip.services.UserManagement;
 
 
