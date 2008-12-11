@@ -12,6 +12,12 @@
 		<tr>
 			<td> update description field </td>
 		</tr>
+		<tr>
+			<td> Validation for finishing task and point assignment </td>
+		</tr>
+		<tr>
+			<td> Implement Task Action </td>
+		</tr>
 		
 	</table>
 </t:layout>

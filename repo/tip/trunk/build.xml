@@ -1,0 +1,48 @@
+<project name="TIP" default="war" basedir=".">
+	<description>
+        TIP Build file
+    </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist"  location="dist"/>
+	<property name="script"  location="script"/>
+	<property name="lib"  location="../lib"/>
+
+	<!-- Tomcat Properties -->
+	<property name="tomcat.home" location="D:/data/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/"/>
+	<property name="tomcat.context" location="${tomcat.home}/webapps/tip"/>
+
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}/src"/>
+		<mkdir dir="${build}/test"/>
+	</target>
+
+	<target name="compile" depends="init"
+        description="compile the source " >
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}/src"
+			classpathref="all.class.path"/>
+	</target>
+
+	<target name="war" 
+	        description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/TIP.war" basedir="${tomcat.context}"
+			 excludes="**/WEB-INF/lib/*.jar"
+		/>
+	</target>
+
+	<target name="clean"
+        description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+</project>
