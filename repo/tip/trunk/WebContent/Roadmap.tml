@@ -18,6 +18,9 @@
 		<tr>
 			<td> Implement Task Action </td>
 		</tr>
+		<tr>
+			<td> Fix the DB Structure </td>
+		</tr>
 		
 	</table>
 </t:layout>

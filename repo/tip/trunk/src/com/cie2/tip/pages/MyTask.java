@@ -47,16 +47,8 @@ public class MyTask extends CieUserPage {
 	}
 	
     public BeanModel getModel() {
-        BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
+        BeanModel model = beanModelSource.createEditModel(TaskItem.class, messages);
         model.add("finish", null);
         return model;
     }	
-
-	public TaskItem getTaskItem() {
-		return taskItem;
-	}
-
-	public void setTaskItem(TaskItem taskItem) {
-		this.taskItem = taskItem;		
-	}
 }
