@@ -56,6 +56,9 @@
 </ul>
 </t:if>
 
+<t:if test="isAutoLogin()" >
+<h2> <font color="red"> Auto Login Is On </font> </h2>
+</t:if>
 </div>
 
 <div class="menubottom"> </div>

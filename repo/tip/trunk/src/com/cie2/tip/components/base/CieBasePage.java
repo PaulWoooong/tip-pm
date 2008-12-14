@@ -7,6 +7,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import com.cie2.tip.Visit;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.pages.Start;
+import com.cie2.tip.services.LayoutInfoNotifier;
 import com.cie2.tip.services.SecurityFinder;
 
 
@@ -21,25 +22,22 @@ public class CieBasePage {
 	@Inject
 	private SecurityFinder securityFinder;
 	
+	@Inject
+	private LayoutInfoNotifier layoutInfo;
 	
 //	/**
 //	 * Validate that the user is logged in.  If not logged in, then redirects to the login page.
 //	 */
 	Object onActivate() {
 		
-		
-		logger.info("Visit : " + visit );
-		
 		if (null == visit) {
 			// check autologin nyala gak ?
-			if (isAutoLoginOn()) {
+			if (layoutInfo.isAutoLoginOn()) {
 				autoLogin(1L);
 			}
 			else 
 				return Start.class;
 		}
-
-		logger.info(" current access level " + visit.getUser().getAccessLevel());
 		return null;
 	}
 
@@ -51,15 +49,6 @@ public class CieBasePage {
 		this.visit = visit;
 	}
 	
-	/**
-	 * Checks the value of system property jumpstart.auto-login.  If "true" then returns true; if "false" then return false; 
-	 * if not set then returns false.
-	 */
-	private boolean isAutoLoginOn() {
-		boolean autoLogin = true;
-		return autoLogin;
-	}
-
 	/**
 	 * Automatically logs you in as the given user. Its intention is to prevent you being thrown out of the application 
 	 */

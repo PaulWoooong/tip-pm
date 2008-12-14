@@ -10,6 +10,7 @@ import com.cie2.tip.Visit;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.User.AccessLevel;
 import com.cie2.tip.pages.Start;
+import com.cie2.tip.services.LayoutInfoNotifier;
 
 
 
@@ -22,12 +23,16 @@ public class Layout {
 	@Inject
 	private RequestGlobals _requestGlobals;
 	
+	@Inject
+	private LayoutInfoNotifier layoutInfo;
+	
+	
 	Object onActionFromLogOut() {
-		Session session = _requestGlobals.getRequest().getSession(false);		
+		Session tapSession = _requestGlobals.getRequest().getSession(false);		
 		logger.info("Logging Out User ...");
 		
-		if (session != null) {
-			session.invalidate();
+		if (tapSession != null) {
+			tapSession.invalidate();
 			logger.info("Session invalidated");			
 		}
 		else {
@@ -39,8 +44,8 @@ public class Layout {
 	}
 	
 	public Boolean isAdmin() {
-		Session session = _requestGlobals.getRequest().getSession(false);		
-		Visit visit = (Visit) session.getAttribute("aso:com.cie2.tip.Visit");
+		Session tapSession = _requestGlobals.getRequest().getSession(false);		
+		Visit visit = (Visit) tapSession.getAttribute("aso:com.cie2.tip.Visit");
 
 		if(visit != null ) {
 			User user = visit.getUser();
@@ -53,4 +58,9 @@ public class Layout {
 			
 		return false;
 	}	
+	
+	public Boolean isAutoLogin() {
+		return layoutInfo.isAutoLoginOn();
+	}
+	
 }
