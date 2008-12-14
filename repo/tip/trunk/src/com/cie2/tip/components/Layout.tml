@@ -41,6 +41,11 @@
 <li><t:pagelink page="createTask">Add Task</t:pagelink></li>
 </ul>	    
 
+<h2> Other </h2>
+<ul>
+<li><t:pagelink page="showTask">Show All Task</t:pagelink></li>	
+</ul>
+
 <h2> Profile </h2>
 <ul>
 <li><t:pagelink page="myProfile">My Profile</t:pagelink></li>

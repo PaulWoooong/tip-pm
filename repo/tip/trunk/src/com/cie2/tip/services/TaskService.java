@@ -98,6 +98,13 @@ public class TaskService {
 				.add(Restrictions.eq("workBy", user))
 				.list();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<TaskItem> getWorkedOnTask() {
+		return _session.createCriteria(TaskItem.class).add(
+				Restrictions.eq("taskStatus", TaskStatus.Started))
+				.list();
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<TaskItem> getFinishedTask() {
@@ -106,6 +113,14 @@ public class TaskService {
 				.list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<TaskItem> getFinishedTask(User user) {
+		return _session.createCriteria(TaskItem.class).add(
+				Restrictions.eq("taskStatus", TaskStatus.Finished))
+				.add(Restrictions.eq("workBy", user))
+				.list();
+	}
+
 	public void takeTask(Long id, User user) {
 		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, id);
 		Date today = new Date();
