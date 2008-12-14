@@ -53,7 +53,7 @@ public class ShowTask extends CieUserPage {
 	public BeanModel getModel() {
 		BeanModel model = beanModelSource.create(TaskItem.class, false,
 				messages);
-//		model.add("castVote", null);
+		model.add("user", null);
 		return model;
 	}
 	

@@ -24,7 +24,7 @@ public class TaskItem implements Serializable{
 	}
 
 	public enum TaskStatusLimited {
-		Available, Started, Finished 
+		Started, Finished 
 	}
 	
     private Long id;

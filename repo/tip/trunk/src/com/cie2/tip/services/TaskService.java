@@ -68,6 +68,10 @@ public class TaskService {
 			taskItem.setPoint(5);
 	}
 	
+	public TaskItem load(Long id) {
+		return (TaskItem) _session.load(TaskItem.class, id);
+	}
+	
 	// semua list ini blom di check projectnya 
 	// gimana cara supaya projectnya gak perlu di passing ? 
 	// tapi udah default dari usernya ? 
