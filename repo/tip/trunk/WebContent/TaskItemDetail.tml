@@ -15,8 +15,10 @@
 					</t:pagelink>
 				</td>
 			</tr>
+			<!--
 			<t:loop>
 			</t:loop>
+			-->
 			<tr/>
 		</t:loop>
 		</table>
