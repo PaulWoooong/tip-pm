@@ -40,21 +40,7 @@ public class TaskItemDetail extends CieUserPage {
 	}
 	
 	public List getTaskActions() {
-		
-		List taskActions = taskActionService.getTaskActions(id);
-		
+		List taskActions = taskActionService.getTaskActions(id);		
 			return taskActions;
-//		System.out.println("=== Getting task Actions ");
-//		List taskActions = taskActionService.getTaskActions(id);
-//		
-//		System.out.println("size " + taskActions.size());
-//		for (int i = 0; i < taskActions.size(); i++) {
-//			System.out.println("index " + i);
-//			TaskAction ta = (TaskAction) taskActions.get(i);
-//			System.out.println("I: "  + " " + ta.getAction());
-//			
-//		}
-//
-//		return taskActions;
 	}
 }

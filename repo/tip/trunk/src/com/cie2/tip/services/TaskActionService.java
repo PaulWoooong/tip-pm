@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.cie2.tip.entities.TaskAction;
+import com.cie2.tip.entities.TaskComment;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.TaskItem.TaskStatus;
@@ -31,6 +32,10 @@ public class TaskActionService {
 		return (TaskAction) _session.load(TaskAction.class, id);
 	}
 	
+	public TaskComment loadComment(Long id) {
+		return (TaskComment) _session.load(TaskComment.class, id);
+	}
+	
 	public void addTaskAction(TaskAction taskAction, User user, TaskItem taskItem) {
 		
 		taskAction.setCreatedDate(new Date());
@@ -48,5 +53,18 @@ public class TaskActionService {
 				
 		return taskList;
 		
+	}
+
+	public void addTaskComment(TaskComment taskComment, User user, TaskAction taskAction) {
+		
+		taskComment.setCreatedDate(new Date());
+		taskComment.setTaskAction(taskAction);
+		taskComment.setUser(user);
+		_session.persist(taskComment);	
+	}
+	
+	public List getTaskComment(Long taskActionId) {
+		return _session.createCriteria(TaskComment.class).add(
+				Restrictions.eq("taskAction.id", taskActionId)).list();		
 	}
 }

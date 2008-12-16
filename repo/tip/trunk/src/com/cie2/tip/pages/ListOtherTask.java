@@ -18,9 +18,9 @@ import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.TaskItem.TaskStatusLimited;
 import com.cie2.tip.services.TaskService;
 
-public class ShowTask extends CieUserPage {
+public class ListOtherTask extends CieUserPage {
 	
-	static Logger logger = Logger.getLogger(ShowTask.class.getName());
+	static Logger logger = Logger.getLogger(ListOtherTask.class.getName());
 		
     @Persist
     private TaskStatusLimited _status;
@@ -66,7 +66,7 @@ public class ShowTask extends CieUserPage {
 			listOfTaskItem = taskService.getWorkedOnTask();
 		}
 		
-		return ShowTask.class;
+		return ListOtherTask.class;
 	}
 	
 	

@@ -9,8 +9,14 @@
 		<t:loop source="taskActions" value="taskAction"> 
 			<tr>
 				<td>${taskAction.createdDate} :  ${taskAction.action}</td>
-				<td align="right"> add comment </td>
+				<td align="right"> 
+					<t:pagelink page="createTaskComment" context="taskAction.id">
+						add comment 
+					</t:pagelink>
+				</td>
 			</tr>
+			<t:loop>
+			</t:loop>
 			<tr/>
 		</t:loop>
 		</table>
