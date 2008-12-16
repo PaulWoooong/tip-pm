@@ -1,8 +1,13 @@
 package com.cie2.tip.entities;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
@@ -11,6 +16,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
  * @author abangkis
  *
  */
+@Entity
 public class TaskAction {
 
 
@@ -19,6 +25,8 @@ public class TaskAction {
 	private TaskItem taskItem;
 	
 	private String action;
+	
+	private Date createdDate;
 	
 	private User user;
 
@@ -33,11 +41,18 @@ public class TaskAction {
 		return id;
 	}
 
+	@ManyToOne(targetEntity=TaskItem.class)
+    @JoinColumn(name="TASKITEM_ID")	
 	public TaskItem getTaskItem() {
 		return taskItem;
 	}
 
+	public Date getCreatedDate() {
+		return createdDate;
+	}
 
+	@ManyToOne(targetEntity=User.class)
+    @JoinColumn(name="USER")
 	public User getUser() {
 		return user;
 	}
@@ -58,5 +73,10 @@ public class TaskAction {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 	
 }

@@ -78,4 +78,8 @@ public class ProjectService {
 		else
 			return new ArrayList();
 	}
+	
+	public Project load(Long id) {
+    	return (Project) _session.load(Project.class, id);    			
+	}
 }

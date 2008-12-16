@@ -1,4 +1,17 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+		
        <t:beandisplay object="taskitem">
 		</t:beandisplay>
+
+		<table width="100%">
+			<th>Action</th>
+			<th></th>
+		<t:loop source="taskActions" value="taskAction"> 
+			<tr>
+				<td>${taskAction.createdDate} :  ${taskAction.action}</td>
+				<td align="right"> add comment </td>
+			</tr>
+			<tr/>
+		</t:loop>
+		</table>
 </t:layout>

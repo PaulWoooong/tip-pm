@@ -20,27 +20,23 @@ public class CreateProject extends CieUserPage{
 	@Property
 	private Project project;
 	
-    @Inject
-    private Session _session;
-
     @Inject 
     private ProjectService projectServices;
     
     @CommitAfter
-    Object onSuccess()
-    {
-    	projectServices.createProject(project);
+	Object onSuccess() {
+		projectServices.createProject(project);
 
-        return MyProfile.class;
-    }
+		return MyProfile.class;
+	}
 
-    void onActivate(Long id) {
-    	this.id = id;
-    	project = (Project) _session.load(Project.class, id);    	
-     }
+	void onActivate(Long id) {
+		this.id = id;
+		project = projectServices.load(id);
+	}
 
-     Long onPassivate() {
-        return id;
-     }    
-    
+	Long onPassivate() {
+		return id;
+	}
+
 }

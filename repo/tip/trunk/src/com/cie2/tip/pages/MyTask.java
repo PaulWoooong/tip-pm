@@ -46,9 +46,11 @@ public class MyTask extends CieUserPage {
 		taskService.finishTask(id, user);
 	}
 	
+
     public BeanModel getModel() {
         BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
-        model.add("finish", null);
+        model.add("addAction", null);
+        model.add("finish", null);        
         return model;
     }	
 
