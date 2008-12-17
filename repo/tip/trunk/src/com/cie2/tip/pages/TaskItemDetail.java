@@ -8,6 +8,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskAction;
+import com.cie2.tip.entities.TaskComment;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.services.TaskActionService;
 import com.cie2.tip.services.TaskService;
@@ -19,6 +20,9 @@ public class TaskItemDetail extends CieUserPage {
 
 	@Property
 	private TaskAction taskAction;
+	
+	@Property 
+	private TaskComment taskComment;
 	
 	private Long id;
 

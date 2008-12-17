@@ -1,7 +1,7 @@
 
 insert into project
-(id, defaultproject, name, versions, quorum) 
-values (null, true, 'default project', '0.1', 2);
+(id, defaultproject, name, versions) 
+values (null, true, 'default project', '0.1');
 
 insert into tip.user
 (id, username, password, accessLevel, current_project_id) 

@@ -39,8 +39,7 @@ public class TaskComment {
 		return createdDate;
 	}
 
-	@ManyToOne(targetEntity=TaskAction.class)
-    @JoinColumn(name="TASKACTION_ID")		
+	@ManyToOne
 	public TaskAction getTaskAction() {
 		return taskAction;
 	}

@@ -15,11 +15,13 @@
 					</t:pagelink>
 				</td>
 			</tr>
-			<!--
-			<t:loop>
+			<t:loop source="taskAction.taskComments" value="taskComment">
+			<tr>
+			<td>
+				${taskComment.user.userName}: ${taskComment.comment}
+			</td>
+			</tr>
 			</t:loop>
-			-->
-			<tr/>
 		</t:loop>
 		</table>
 </t:layout>

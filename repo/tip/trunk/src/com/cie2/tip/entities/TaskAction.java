@@ -1,6 +1,7 @@
 package com.cie2.tip.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
@@ -30,9 +32,7 @@ public class TaskAction {
 	
 	private User user;
 
-	public String getAction() {
-		return action;
-	}
+	private List <TaskComment> taskComments;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,11 @@ public class TaskAction {
 		return id;
 	}
 
+	public String getAction() {
+		return action;
+	}
+	
+	
 	@ManyToOne(targetEntity=TaskItem.class)
     @JoinColumn(name="TASKITEM_ID")	
 	public TaskItem getTaskItem() {
@@ -78,5 +83,13 @@ public class TaskAction {
 		this.createdDate = createdDate;
 	}
 
+	@OneToMany(mappedBy="taskAction")
+	public List<TaskComment> getTaskComments() {
+		return taskComments;
+	}
+
+	public void setTaskComments(List<TaskComment> taskComments) {
+		this.taskComments = taskComments;
+	}
 	
 }
