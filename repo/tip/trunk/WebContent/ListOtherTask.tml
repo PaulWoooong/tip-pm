@@ -5,7 +5,9 @@
 	<t:select t:id="taskStatus"/>
     <input type="submit" value="Filter"/>
     	
-    <t:grid  source="taskItems" row="taskItem" pagerPosition="both" model="model">
+    <t:grid  source="taskItems" row="taskItem" pagerPosition="both" model="model"
+    	exclude="taskType">
+		
 		<t:parameter name="titleCell">
    			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
  		</t:parameter>    	

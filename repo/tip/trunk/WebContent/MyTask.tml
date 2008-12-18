@@ -1,7 +1,7 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	${visit.user.username} Task
     <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model"
-    	exclude="taskStatus">
+    	exclude="taskStatus, taskType">
     	
 		<t:parameter name="titleCell">
    			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>

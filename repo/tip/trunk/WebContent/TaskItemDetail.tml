@@ -6,22 +6,26 @@
 		<table width="100%">
 			<th>Action</th>
 			<th></th>
-		<t:loop source="taskActions" value="taskAction"> 
-			<tr>
-				<td>${taskAction.createdDate} :  ${taskAction.action}</td>
-				<td align="right"> 
-					<t:pagelink page="createTaskComment" context="taskAction.id">
-						add comment 
-					</t:pagelink>
+			<t:loop source="taskActions" value="taskAction"> 
+				<tr>
+					<td>${taskAction.createdDate}: </td>
+					<td>${taskAction.action}</td>
+					<td align="right"> 
+						<t:pagelink page="createTaskComment" context="taskAction.id">
+							add comment 
+						</t:pagelink>
+					</td>
+				</tr>
+				<t:loop source="taskAction.taskComments" value="taskComment">
+				<tr>
+				<td align="right">
+					${taskComment.user.userName}: 
 				</td>
-			</tr>
-			<t:loop source="taskAction.taskComments" value="taskComment">
-			<tr>
-			<td>
-				${taskComment.user.userName}: ${taskComment.comment}
-			</td>
-			</tr>
+				<td>
+					${taskComment.comment}
+				</td>
+				</tr>
+				</t:loop>
 			</t:loop>
-		</t:loop>
 		</table>
 </t:layout>

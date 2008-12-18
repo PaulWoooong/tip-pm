@@ -1,22 +1,16 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	List Of Available Task
-    <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model">
+    <t:grid  source="taskItems" row="taskitem" pagerPosition="both" model="model"
+    	exclude="taskType">
+    	
     	<t:parameter name="takeTaskCell">
 			<t:actionlink t:id="takeTask" context="taskItem.id">Take Task</t:actionlink>
     	</t:parameter>
 
-    	<!--
- 		
- 		<t:parameter name="nameCell">
-    		<t:pagelink page="CreateContact" context="taskItem.id">${contact.name}
-    		</t:pagelink>
-    	</t:parameter>
+    	<!--		
     	<t:parameter name="nameHeader">
     		MHS Name
     	</t:parameter>
-    			<t:parameter name="castVoteCell">
-			<t:actionlink t:id="castVote" context="taskItem.id">Cast Vote</t:actionlink>
-        </t:parameter>    	
     	-->    
     </t:grid>        
 </t:layout>

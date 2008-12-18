@@ -1,5 +1,6 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	List In Vote Task
-    <t:grid  source="taskItems" row="taskItem" pagerPosition="both">
+    <t:grid  source="taskItems" row="taskItem" pagerPosition="both"
+    	exclude="taskType">
     </t:grid>        
 </t:layout>

@@ -12,3 +12,9 @@ update user set current_project_id = 1;
 update user set access
 
 update taskitem set taskstatus = 0;
+
+update taskitem set votedown = 0;
+
+update taskitem set voteup = vote;
+
+alter table taskItem drop column vote;

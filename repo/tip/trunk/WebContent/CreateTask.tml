@@ -11,7 +11,8 @@
 		</div>
 	-->
 
-	    <t:beaneditor t:id="taskEditor" object="taskItem" exclude="taskStatus, taskType, vote, point"/>
+	    <t:beaneditor t:id="taskEditor" object="taskItem" 
+	    	exclude="taskStatus, taskType, voteUp, voteDown, point"/>
 	<input type="submit" value="save changes"/>    
 	</t:form>
 </t:layout>

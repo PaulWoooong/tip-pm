@@ -37,7 +37,8 @@ public class TaskItem implements Serializable{
     private String description;
     private TaskType taskType;
     private TaskStatus taskStatus;
-    private int vote;
+    private int voteUp;
+    private int voteDown;
     private int point;    
     private Date createdDate;
     private Date startDate;
@@ -87,8 +88,13 @@ public class TaskItem implements Serializable{
 		return taskType;
 	}
 
-	public int getVote() {
-		return vote;
+	public int getVoteUp() {
+		return voteUp;
+	}
+	
+
+	public int getVoteDown() {
+		return voteDown;
 	}
 	
 	public int getPoint() {
@@ -152,8 +158,8 @@ public class TaskItem implements Serializable{
 	public void setCreatedBy(User user) {
 		this.createdBy = user;
 	}
-	public void setVote(int vote) {
-		this.vote = vote;
+	public void setVoteUp(int vote) {
+		this.voteUp = vote;
 	}
 
 	public void setProject(Project project) {
@@ -173,6 +179,10 @@ public class TaskItem implements Serializable{
 
 	public void setWorkBy(User workBy) {
 		this.workBy = workBy;
+	}
+
+	public void setVoteDown(int voteDown) {
+		this.voteDown = voteDown;
 	}
 
 
