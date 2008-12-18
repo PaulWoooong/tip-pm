@@ -43,8 +43,7 @@ public class ListTask extends CieUserPage {
 
 //		logger.info("Visit=" + sessionTap.getAttribute("aso:com.cie2.tip.Visit"));
 
-		User currentUser = getVisit().getUser();
-		return taskService.getVotedTask(currentUser);
+		return taskService.getVotedTask();
 	}
 	
     @CommitAfter

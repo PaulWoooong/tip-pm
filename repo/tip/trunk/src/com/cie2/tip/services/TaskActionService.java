@@ -13,6 +13,7 @@ import com.cie2.tip.entities.TaskComment;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.TaskItem.TaskStatus;
+import com.cie2.tip.services.actions.ITaskAction;
 
 public class TaskActionService {
 
@@ -35,7 +36,7 @@ public class TaskActionService {
 	public TaskComment loadComment(Long id) {
 		return (TaskComment) _session.load(TaskComment.class, id);
 	}
-	
+
 	public void addTaskAction(TaskAction taskAction, User user, TaskItem taskItem) {
 		
 		taskAction.setCreatedDate(new Date());
@@ -43,6 +44,17 @@ public class TaskActionService {
 		taskAction.setUser(user);
 		
 		_session.persist(taskAction);
+	}
+	
+	public void addTaskAction(ITaskAction taskAction) {
+		TaskAction entityTaskAction = new TaskAction();
+
+		entityTaskAction.setAction(taskAction.getAction());
+		entityTaskAction.setCreatedDate(new Date());
+		entityTaskAction.setTaskItem(taskAction.getTaskItem());
+		entityTaskAction.setUser(taskAction.getUser());
+		
+		_session.persist(entityTaskAction);
 	}
 
 	public List getTaskActions(Long taskItemId) {
