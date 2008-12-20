@@ -36,7 +36,7 @@ public class CreateTask extends CieUserPage{
 	@SuppressWarnings("unused")
 	@Property
 	@Persist
-	private EasyIdSelectModel<Category> categoryModels;
+	private EasyIdSelectModel<Category> myModel;
 
 	@Property
 	private Long _categoryId;
@@ -65,21 +65,30 @@ public class CreateTask extends CieUserPage{
         return ListNewTask.class;
     }
 
+    void onPrepare() {
+    	System.out.println("Prepare");
+    	if(null == myModel) {
+    		refreshCategory();
+    	}
+    }
+    
     void onActivate(Long id) {
+		System.out.println("=== Calling on active ID");
+    	refreshCategory();
     	this.id = id;
     	taskItem = (TaskItem) _session.load(TaskItem.class, id); 
-    	refreshCategory();
      }
 
 	void onActivate() {
+		System.out.println("=== Calling on active");
 		refreshCategory();
 	}
 
 	void refreshCategory() {
-		System.out.println("Refreshing Categories");
+		System.out.println("=== Refreshing Categories");
 		List<Category> categories = categoryService.findCategory(projectServices.getDefaultProject());
-		logger.info("Refresh persons size : " + categories.size());
-		categoryModels = new EasyIdSelectModel<Category>(categories, Category.class, "name", "id", _propertyAccess);
+		logger.info("Refresh category size : " + categories.size());
+		myModel = new EasyIdSelectModel<Category>(categories, Category.class, "name", "id", _propertyAccess);
 	} 
 	
      Long onPassivate() {

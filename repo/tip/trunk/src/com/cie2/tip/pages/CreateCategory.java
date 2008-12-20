@@ -28,6 +28,7 @@ public class CreateCategory  {
 	@Property
 	private Long _categoryId;
 
+	@Property
 	private Category category;
 	
 	
@@ -81,15 +82,6 @@ public class CreateCategory  {
 
         return ListCategory.class;
     }
-          
-    	
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 	
 	
 }
