@@ -153,8 +153,7 @@ public class TaskService {
 		taskItem.setLastChangedDate(new Date());
 		user.setPoint(user.getPoint() + taskItem.getPoint());
 		_session.update(taskItem);
-		// atau di evict dulu
-		// _session.merge(user);
+		_session.merge(user);
 
 		FinishTaskAction taskAction = new FinishTaskAction(user, taskItem);
 		_taskActionService.addTaskAction(taskAction);

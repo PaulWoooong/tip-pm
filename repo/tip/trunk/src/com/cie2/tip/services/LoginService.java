@@ -8,11 +8,11 @@ import org.hibernate.criterion.Restrictions;
 import com.cie2.tip.entities.User;
 
 
-public class SecurityFinder {
+public class LoginService {
 	
 	private Session _session;
 	
-	public SecurityFinder(Session session) {
+	public LoginService(Session session) {
 		_session = session;
 	}
 
@@ -32,5 +32,10 @@ public class SecurityFinder {
 	
 	public User findUser(Long userId) {
 		return (User) _session.get(User.class, userId);
+	}
+	
+	public void login(User user) {
+		_session.merge(user);		
+		_session.flush();
 	}
 }

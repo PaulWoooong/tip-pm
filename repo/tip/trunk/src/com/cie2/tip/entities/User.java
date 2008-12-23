@@ -1,6 +1,7 @@
 package com.cie2.tip.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,8 @@ public class User implements Serializable{
 	private Boolean ableToVote;
 	
 	private Project currentProject;
+	
+	private Date LastLogin;
 	
 	// kalau udah multiple project bakal gak kepake
 	private Integer point;
@@ -73,6 +76,10 @@ public class User implements Serializable{
 		return currentProject;
 	}
 	
+	public Date getLastLogin() {
+		return LastLogin;
+	}
+
 	public Integer getPoint() {
 		return point;
 	}
@@ -116,6 +123,11 @@ public class User implements Serializable{
 
 	public void setPoint(Integer point) {
 		this.point = point;
+	}
+
+
+	public void setLastLogin(Date lastLogin) {
+		LastLogin = lastLogin;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.cie2.tip.pages;
 
+import java.util.Date;
+
 import javax.security.auth.login.LoginException;
 
 import org.apache.log4j.Logger;
@@ -8,11 +10,12 @@ import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.TextField;
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.cie2.tip.Visit;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.services.SecurityFinder;
+import com.cie2.tip.services.LoginService;
 
 
 public class Start {
@@ -38,7 +41,7 @@ public class Start {
 //	private Admin admin;
 //
 	@Inject
-	private SecurityFinder securityFinder;
+	private LoginService loginService;
 	
 	/** @ToDo
 	 	seharusnya tugas instatiate visit ada di security finder kah ? 
@@ -48,7 +51,7 @@ public class Start {
 		try {
 			System.out.println("Authenticating " + username);
 			logger.info("Authenticating " + username);
-			User user = securityFinder.authenticate(username, password);
+			User user = loginService.authenticate(username, password);
 			
 			if(null != user) {
 				visit = new Visit();
@@ -61,6 +64,7 @@ public class Start {
 		}
 	}
 	
+	@CommitAfter
 	Object onSuccess() {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Success " + visit);
@@ -75,7 +79,11 @@ public class Start {
 //		else 
 //			return ListContact.class;
 //		
-		
+		// update login info
+		User user = visit.getUser();
+		user.setLastLogin(new Date());
+		loginService.login(user);
+
 		return MyTask.class;
 	}
 

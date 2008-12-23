@@ -8,7 +8,7 @@ import com.cie2.tip.Visit;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.pages.Start;
 import com.cie2.tip.services.LayoutInfoNotifier;
-import com.cie2.tip.services.SecurityFinder;
+import com.cie2.tip.services.LoginService;
 
 
 public class CieBasePage {
@@ -20,7 +20,7 @@ public class CieBasePage {
 	private Visit visit;
 		
 	@Inject
-	private SecurityFinder securityFinder;
+	private LoginService securityFinder;
 	
 	@Inject
 	private LayoutInfoNotifier layoutInfo;

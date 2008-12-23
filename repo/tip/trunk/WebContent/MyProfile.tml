@@ -18,8 +18,9 @@
 	 	Able To Vote ! 
 	 	<br/>
 
-		
-	 		You have ${visit.user.accesslevel} Level Access
+	 		You have ${visit.user.accesslevel} Level Access <br/>
+
+		Last login ${visit.user.lastLogin}
 	</t:if>
 		
 	<br/><br/>
