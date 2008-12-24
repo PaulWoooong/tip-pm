@@ -1,4 +1,19 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	<t:chart width="200" height="150" context="chart1" popup="popupSize"/>
 	<t:chart width="400" height="300" context="chart2" popup="popupSize"/>
+
+	<br/>
+	Users :
+	<br/>
+	<t:loop source="activeUser" value="user">
+		${user.userName} : 
+		<t:if test="user.lastLogin">
+			${user.lastLogin} 
+			<t:parameter name="else">
+				User never login 
+            </t:parameter>	
+		</t:if>
+		<br/>
+	</t:loop>
+		
 </t:layout>

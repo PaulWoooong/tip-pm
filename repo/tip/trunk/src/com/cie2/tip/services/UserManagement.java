@@ -1,5 +1,7 @@
 package com.cie2.tip.services;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
@@ -32,5 +34,9 @@ public class UserManagement {
 	
 	private void populateUserTask() {
 		//ambil task yang belum di vote. add to user task
+	}
+	
+	public List getActiveUser() {
+		return _session.createCriteria(User.class).list();
 	}
 }
