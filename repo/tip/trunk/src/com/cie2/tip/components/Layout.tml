@@ -34,11 +34,11 @@
 <div class="menumiddle"> 
 <h2>Tasks: </h2>
 <ul>
-<li><t:pagelink page="myTask">My Task</t:pagelink></li>
+<li><t:pagelink page="createTask">Add Task</t:pagelink></li>
 <li><t:pagelink page="listnewtask">New Task</t:pagelink></li>
 <li><t:pagelink page="listTask">Available Task</t:pagelink></li>
+<li><t:pagelink page="myTask">My Task</t:pagelink></li>
 <li><t:pagelink page="listFinishedTask">Finished Task</t:pagelink></li>
-<li><t:pagelink page="createTask">Add Task</t:pagelink></li>
 </ul>	    
 
 <h2> Other </h2>
