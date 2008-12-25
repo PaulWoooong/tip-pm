@@ -10,7 +10,7 @@
 	<property name="lib"  location="../lib"/>
 
 	<!-- Tomcat Properties -->
-	<property name="tomcat.home" location="D:/data/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/"/>
+	<property name="tomcat.home" location="D:/data/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/"/>
 	<property name="tomcat.context" location="${tomcat.home}/webapps/tip"/>
 
 
