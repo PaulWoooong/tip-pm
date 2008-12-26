@@ -79,4 +79,8 @@ public class EasyIdSelectModel<T> extends AbstractSelectModel {
 			return o.toString();
 	}
 
+	// my own code
+	public void setList(List list) {
+		this.list = list;
+	}
 }

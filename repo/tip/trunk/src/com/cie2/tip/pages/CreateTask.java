@@ -30,9 +30,7 @@ public class CreateTask extends CieUserPage{
 	@Property
 	private TaskItem taskItem;
 
-    @Inject
-    private Session _session;
-    
+
 	@SuppressWarnings("unused")
 	@Property
 	@Persist
@@ -60,36 +58,43 @@ public class CreateTask extends CieUserPage{
     Object onSuccess()
     {    	
     	User user = getVisit().getUser();
+    	taskItem.getCategory();
     	taskService.addTask(taskItem, user);
 
         return ListNewTask.class;
     }
 
-    void onPrepare() {
-    	System.out.println("Prepare");
+    // kenapa onactivate nya dua2nya gak dipanggil ? 
+//    cuma begin render doang yang dipanggil ?
+    void beginRender() {
     	if(null == myModel) {
-    		refreshCategory();
+    		logger.info("Creating my model");
+
+    		List<Category> categories = categoryService.findCategory(projectServices.getDefaultProject());
+    		logger.info("Refresh category size : " + categories.size());
+    		myModel = new EasyIdSelectModel<Category>(categories, Category.class, "name", "id", _propertyAccess);    	
     	}
+    	else
+    		refreshCategory();
     }
     
     void onActivate(Long id) {
-		System.out.println("=== Calling on active ID");
+    	logger.info("=== Calling on active ID");
     	refreshCategory();
     	this.id = id;
-    	taskItem = (TaskItem) _session.load(TaskItem.class, id); 
+    	taskItem = taskService.load(id);
      }
 
 	void onActivate() {
-		System.out.println("=== Calling on active");
+		logger.info("=== Calling on active");
 		refreshCategory();
 	}
 
-	void refreshCategory() {
-		System.out.println("=== Refreshing Categories");
+	void refreshCategory() {		
 		List<Category> categories = categoryService.findCategory(projectServices.getDefaultProject());
 		logger.info("Refresh category size : " + categories.size());
-		myModel = new EasyIdSelectModel<Category>(categories, Category.class, "name", "id", _propertyAccess);
-	} 
+		myModel.setList(categories);
+	}
 	
      Long onPassivate() {
         return id;

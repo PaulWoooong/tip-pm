@@ -1,48 +1,19 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
-	<table>
-		<th>
-			<td> 1.0 </td>
-		</th>
-		<tr>
-			<td> add category for task</td>
-		</tr>
-		<tr>
-			<td> Task Detail link </td>
-		</tr>
-		<tr>
-			<td> Task With a bonus </td>
-		</tr>
-		<tr>
-			<td> update description field </td>
-		</tr>
-		<tr>
-			<td> Validation for finishing task and point assignment </td>
-		</tr>
-		<tr>
-			<td> Implement Task Action </td>
-		</tr>
-		<tr>
-			<td> Fix the DB Structure </td>
-		</tr>
-		
-	</table>
-	<br/>
-	<table>
-		<th> 
-			<td>2.0 </td>
-		</th>
-		<tr>
-			<td>Multi project</td>
-		</tr>
-	</table>
-	
-	<br/>
-	<table>
-		<th> 
-			<td>3.0 </td>
-		</th>
-		<tr>
-			<td>Project Management Integration</td>
-		</tr>
-	</table>	
+	<h2> T.I.P 1.0 </h2>
+	<ul>
+		<li> Task Details </li>
+		<li> Task Action and Comments </li>
+		<li> Update description field</li>
+		<li> Validation for finishing task and point assignment </li>
+		<li> Flexible Quorum Rules </li>
+		<li> User statistics Reports </li>				
+	</ul>
+
+	<h2> T.I.P 2.0 </h2>
+	<p> Add Support for Multiple Project 
+	</p>
+	<h2> T.I.P 3.0 </h2>
+	<p> Add Project Management and Integration with the Task management
+	</p>
+
 </t:layout>

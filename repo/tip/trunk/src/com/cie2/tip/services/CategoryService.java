@@ -32,4 +32,10 @@ public class CategoryService {
 
 		return categories;		
 	}
+
+	public void add(Category category) {
+		_session.persist(category);
+	}
+	
+	
 }

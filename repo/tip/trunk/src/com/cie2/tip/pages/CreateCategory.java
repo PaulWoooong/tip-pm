@@ -32,9 +32,6 @@ public class CreateCategory  {
 	private Category category;
 	
 	
-    @Inject
-    private Session _session;
-
     // services
     @Inject
 	private CategoryService categoryService;
@@ -72,14 +69,13 @@ public class CreateCategory  {
     @CommitAfter
     Object onSuccess()
     {
-    	System.out.println("== Category id == " + _categoryId);
+    	logger.info("Parent Category id : " + _categoryId);
     	if (_categoryId != null) {
 			Category parentCategory = categoryService.findCategory(_categoryId);
 			category.setParentCategory(parentCategory);
 		}
     	category.setProject(projectServices.getDefaultProject());
-        _session.persist(category);
-
+    	categoryService.add(category);
         return ListCategory.class;
     }
 	
