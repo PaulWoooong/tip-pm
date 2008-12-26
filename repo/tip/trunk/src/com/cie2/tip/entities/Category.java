@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
 
 @Entity
 public class Category implements Serializable{
@@ -32,6 +33,7 @@ public class Category implements Serializable{
 		return id;
 	}
 
+	@Validate("required")
 	public String getName() {
 		return name;
 	}

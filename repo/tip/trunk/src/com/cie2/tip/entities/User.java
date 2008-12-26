@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
 
 @Entity
 public class User implements Serializable{
@@ -47,10 +48,12 @@ public class User implements Serializable{
 		return id;
 	}
 
+	@Validate("required")
 	public String getUsername() {
 		return username;
 	}
 
+	@Validate("required")
 	public String getPassword() {
 		return password;
 	}
@@ -104,6 +107,7 @@ public class User implements Serializable{
 		this.username = username;
 	}
 
+	@Validate("required")
 	public AccessLevel getAccessLevel() {
 		return accessLevel;
 	}

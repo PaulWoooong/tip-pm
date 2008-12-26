@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
 
 @Entity
 public class TaskItem implements Serializable{
@@ -72,7 +73,8 @@ public class TaskItem implements Serializable{
 	public User getWorkBy() {
 		return workBy;
 	}
-    
+
+    @Validate("required")
 	public String getTitle() {
 		return title;
 	}

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
 
 @Entity
 public class Project implements Serializable{
@@ -26,6 +27,7 @@ public class Project implements Serializable{
 		return id;
 	}
 
+	@Validate("required")
 	public String getName() {
 		return name;
 	}
