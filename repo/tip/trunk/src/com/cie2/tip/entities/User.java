@@ -28,18 +28,12 @@ public class User implements Serializable{
 	
 	private Boolean defaultPass;
 	
-	private Integer profileId;
-	
-	private AccessLevel accessLevel;
-
-	private Boolean ableToVote;
+	private UserProfile currentProfile;
 	
 	private Project currentProject;
 	
 	private Date LastLogin;
 	
-	// kalau udah multiple project bakal gak kepake
-	private Integer point;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,19 +53,17 @@ public class User implements Serializable{
 	}
 
 	@NonVisual
-	public Integer getProfileId() {
-		return profileId;
+	@Validate("required")
+    @OneToOne
+    @JoinColumn(name="CURRENT_PROFILE_ID")
+	public UserProfile getCurrentProfile() {
+		return currentProfile;
 	}
 	
 	@NonVisual
 	public Boolean getDefaultPass() {
 		return defaultPass;
 	}
-
-	public Boolean getAbleToVote() {
-		return ableToVote;
-	}
-
 	
     @OneToOne
     @JoinColumn(name="CURRENT_PROJECT_ID")
@@ -81,10 +73,6 @@ public class User implements Serializable{
 	
 	public Date getLastLogin() {
 		return LastLogin;
-	}
-
-	public Integer getPoint() {
-		return point;
 	}
 
 	public void setDefaultPass(Boolean defaultPass) {
@@ -99,39 +87,25 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public void setProfileId(Integer profileId) {
-		this.profileId = profileId;
+	public void setProfileId(UserProfile userProfile) {
+		this.currentProfile = userProfile;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	@Validate("required")
-	public AccessLevel getAccessLevel() {
-		return accessLevel;
-	}
-
-	public void setAccessLevel(AccessLevel accessLevel) {
-		this.accessLevel = accessLevel;
-	}
-
-	public void setAbleToVote(Boolean ableToVote) {
-		this.ableToVote = ableToVote;
-	}
-
-
 	public void setCurrentProject(Project defaultProject) {
 		this.currentProject = defaultProject;
-	}
-
-	public void setPoint(Integer point) {
-		this.point = point;
 	}
 
 
 	public void setLastLogin(Date lastLogin) {
 		LastLogin = lastLogin;
+	}
+
+	public void setCurrentProfile(UserProfile currentProfile) {
+		this.currentProfile = currentProfile;
 	}
 
 }

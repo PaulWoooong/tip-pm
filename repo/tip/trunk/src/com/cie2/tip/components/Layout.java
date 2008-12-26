@@ -51,7 +51,7 @@ public class Layout {
 			User user = visit.getUser();
 
 			if(user != null) {
-				if(AccessLevel.Admin.equals(user.getAccessLevel()))
+				if(AccessLevel.Admin.equals(user.getCurrentProfile().getAccessLevel()))
 						return true;
 			}
 		}

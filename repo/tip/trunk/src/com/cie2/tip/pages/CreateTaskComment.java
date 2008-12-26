@@ -1,5 +1,7 @@
 package com.cie2.tip.pages;
 
+import java.util.List;
+
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -17,6 +19,9 @@ public class CreateTaskComment extends CieUserPage {
 	
 	@Property
 	private TaskComment taskComment;
+
+	@Property
+	private TaskComment taskCommentItem;
 	
 	@InjectPage
 	private TaskItemDetail taskItemDetail;
@@ -43,4 +48,9 @@ public class CreateTaskComment extends CieUserPage {
 		taskItemDetail.onActivate(taskAction.getTaskItem().getId());
 		return taskItemDetail;
 	}
+	
+	public List getTaskComments() {
+		List taskComments = taskActionService.getTaskComment(taskActionId);		
+			return taskComments;
+	}	
 }

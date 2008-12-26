@@ -24,9 +24,11 @@ public class LoginService {
 				Restrictions.eq("username", username)).add(
 				Restrictions.eq("password", password)).uniqueResult();
 
-		if(user == null)
+		if(null == user)
 			throw new LoginException("Failed To Login");
-
+		if(null == user.getCurrentProfile() )
+			throw new LoginException("Current Profile is not set");
+		
 		return user;
 	}
 	

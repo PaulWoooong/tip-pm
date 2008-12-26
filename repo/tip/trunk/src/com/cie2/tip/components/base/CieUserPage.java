@@ -1,6 +1,5 @@
 package com.cie2.tip.components.base;
 
-import com.cie2.tip.entities.User.AccessLevel;
 import com.cie2.tip.pages.Start;
 
 

@@ -151,7 +151,7 @@ public class TaskService {
 
 		taskItem.setTaskStatus(TaskStatus.Finished);
 		taskItem.setLastChangedDate(new Date());
-		user.setPoint(user.getPoint() + taskItem.getPoint());
+		user.getCurrentProfile().setTotalPoint(user.getCurrentProfile().getTotalPoint() + taskItem.getPoint());
 		_session.update(taskItem);
 		_session.merge(user);
 

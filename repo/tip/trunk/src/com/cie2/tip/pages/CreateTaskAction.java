@@ -1,5 +1,7 @@
 package com.cie2.tip.pages;
 
+import java.util.List;
+
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -18,6 +20,9 @@ public class CreateTaskAction extends CieUserPage {
 	
 	@Property
 	private TaskAction taskAction;
+
+	@Property
+	private TaskAction taskActionItem;
 	
 	@InjectPage
 	private TaskItemDetail taskItemDetail;
@@ -47,5 +52,9 @@ public class CreateTaskAction extends CieUserPage {
 		taskItemDetail.onActivate(taskItem.getId());
 		return taskItemDetail;
 	}
-	
+
+	public List getTaskActions() {
+		List taskActions = taskActionService.getTaskActions(taskItemId);		
+			return taskActions;
+	}	
 }

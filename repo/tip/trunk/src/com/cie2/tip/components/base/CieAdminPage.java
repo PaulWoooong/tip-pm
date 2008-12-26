@@ -14,7 +14,7 @@ public class CieAdminPage extends CieBasePage{
 			return Start.class;
 		}
 		else {
-			if(!AccessLevel.Admin.equals(getVisit().getUser().getAccessLevel())) {
+			if(!AccessLevel.Admin.equals(getVisit().getUser().getCurrentProfile().getAccessLevel())) {
 				return Start.class;
 			}
 		}

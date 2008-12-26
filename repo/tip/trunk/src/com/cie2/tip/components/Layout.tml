@@ -54,7 +54,7 @@
 <li><t:pagelink page="easyIdSelect">Select</t:pagelink></li>
 <li><t:pagelink page="myChart">Reports</t:pagelink></li>
 </ul>
-	 	
+
 <t:if test="isAdmin()"> 
 <h2>Admin </h2>
 <ul>

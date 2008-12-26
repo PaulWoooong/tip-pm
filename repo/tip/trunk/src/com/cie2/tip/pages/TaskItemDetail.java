@@ -24,7 +24,7 @@ public class TaskItemDetail extends CieUserPage {
 	@Property 
 	private TaskComment taskComment;
 	
-	private Long id;
+	private Long taskItemId;
 
 	//services
 	@Inject
@@ -35,16 +35,16 @@ public class TaskItemDetail extends CieUserPage {
 	
 	
 	void onActivate(Long taskItemId) {
-		this.id = taskItemId;
+		this.taskItemId = taskItemId;
 		taskItem = (TaskItem) taskService.load(taskItemId);
 	}
 
 	Long onPassivate() {
-		return id;
+		return taskItemId;
 	}
 	
 	public List getTaskActions() {
-		List taskActions = taskActionService.getTaskActions(id);		
+		List taskActions = taskActionService.getTaskActions(taskItemId);		
 			return taskActions;
 	}
 }

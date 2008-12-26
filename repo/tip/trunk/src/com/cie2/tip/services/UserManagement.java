@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import com.cie2.tip.entities.Project;
 import com.cie2.tip.entities.User;
+import com.cie2.tip.entities.UserProfile;
 
 public class UserManagement {
 
@@ -26,7 +27,13 @@ public class UserManagement {
 	   	Project currentProject = _projectService.getDefaultProject();
     	logger.info("Current Project = " + currentProject.getName());
     	user.setCurrentProject(currentProject);
-    	user.setPoint(0);
+    	
+    	UserProfile userProfile = new UserProfile();
+    	userProfile.setProject(currentProject);
+    	userProfile.setUser(user);
+    	userProfile.setTotalPoint(0);
+    	
+    	user.setCurrentProfile(userProfile);
 
     	_session.persist(user);
 

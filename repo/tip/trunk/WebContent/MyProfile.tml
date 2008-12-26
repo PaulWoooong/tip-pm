@@ -11,16 +11,17 @@
             </t:parameter>			
 		</t:if>
 		<br/>
-		Your Current Point : ${visit.user.point}
+		Your Current Point : ${visit.user.currentprofile.totalpoint}
 		<br/>
 		You are :
-	 	<t:if test="visit.user.ableToVote" negate="true"> <em> Not </em></t:if>
+	 	<t:if test="visit.user.currentprofile.ableToVote" negate="true"> <em> Not </em></t:if>
 	 	Able To Vote ! 
 	 	<br/>
 
-	 		You have ${visit.user.accesslevel} Level Access <br/>
+	 		You have ${visit.user.currentprofile.accesslevel} Level Access <br/>
 
 		Last login ${visit.user.lastLogin}
+
 	</t:if>
 		
 	<br/><br/>

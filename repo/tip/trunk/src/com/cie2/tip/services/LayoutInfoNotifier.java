@@ -11,8 +11,8 @@ public class LayoutInfoNotifier {
 	 * if not set then returns false.
 	 */
 	public Boolean isAutoLoginOn() {
-//		return false;
-		return true;
+		return false;
+//		return true;
 	}
 	
 	public void getActivePage() {
