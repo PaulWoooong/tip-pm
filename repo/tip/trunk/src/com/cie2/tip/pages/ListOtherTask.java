@@ -54,6 +54,7 @@ public class ListOtherTask extends CieUserPage {
 		BeanModel model = beanModelSource.create(TaskItem.class, false,
 				messages);
 		model.add("user", null);
+		model.add("category", null);
 		return model;
 	}
 	

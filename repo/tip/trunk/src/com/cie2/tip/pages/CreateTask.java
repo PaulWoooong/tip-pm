@@ -39,7 +39,6 @@ public class CreateTask extends CieUserPage{
 	@Property
 	private Long _categoryId;
 
-	private Category category;
 
 	// services    
     @Inject
@@ -58,7 +57,14 @@ public class CreateTask extends CieUserPage{
     Object onSuccess()
     {    	
     	User user = getVisit().getUser();
-    	taskItem.getCategory();
+
+    	// bisa di extract ke service gak ? yang di create category soalnya sama
+    	if (_categoryId != null) {
+			Category parentCategory = categoryService.findCategory(_categoryId);
+	    	taskItem.setCategory(parentCategory);
+	    	logger.info("Category name " + parentCategory.getName());
+		}  	
+    	
     	taskService.addTask(taskItem, user);
 
         return ListNewTask.class;

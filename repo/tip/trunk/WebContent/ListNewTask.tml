@@ -1,8 +1,12 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 	List Of New Task
     <t:grid  source="taskItems" row="taskItem" pagerPosition="both" model="model" 
-    	exclude="taskType">
+    	exclude="taskType"
+    	reorder="title, category">
 
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>
 		<t:parameter name="castVoteCell">
 	 	<t:if test="visit.user">
 	 		<t:if test="visit.user.ableToVote">

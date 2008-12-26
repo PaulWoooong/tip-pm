@@ -22,3 +22,5 @@ update taskitem set voteup = vote;
 
 alter table taskItem drop column vote;
 
+update taskitem set category_id = 1
+where category_id = null;

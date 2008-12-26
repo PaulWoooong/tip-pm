@@ -63,6 +63,7 @@ public class ListTask extends CieUserPage {
     public BeanModel getModel() {
         BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
         model.add("takeTask", null);
+        model.add("category", null);        
         return model;
     }	
 

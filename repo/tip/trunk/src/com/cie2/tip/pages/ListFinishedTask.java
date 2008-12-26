@@ -40,6 +40,7 @@ public class ListFinishedTask extends CieUserPage{
 	public BeanModel getModel() {
 		BeanModel model = beanModelSource.create(TaskItem.class, false,
 				messages);
+		model.add("category", null);
 		return model;
 	}
 

@@ -61,6 +61,7 @@ public class ListNewTask extends CieUserPage {
 		BeanModel model = beanModelSource.create(TaskItem.class, false,
 				messages);
 		model.add("castVote", null);
+		model.add("category", null);
 		return model;
 	}
 

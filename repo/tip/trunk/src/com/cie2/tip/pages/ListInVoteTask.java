@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.beaneditor.BeanModel;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.BeanModelSource;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskItem;
@@ -24,6 +27,11 @@ public class ListInVoteTask extends CieUserPage {
 	@Property
 	private TaskItem taskItem;
 
+	@Inject
+	private BeanModelSource beanModelSource;
+
+	@Inject
+	private Messages messages;
 
 	// services
 	@Inject
@@ -33,11 +41,9 @@ public class ListInVoteTask extends CieUserPage {
 		return taskService.getInVoteTask();
 	}
 
-	public TaskItem getTaskItem() {
-		return taskItem;
-	}
-
-	public void setTaskItem(TaskItem taskItem) {
-		this.taskItem = taskItem;
-	}
+    public BeanModel getModel() {
+        BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
+        model.add("category", null);
+        return model;
+    }		
 }
