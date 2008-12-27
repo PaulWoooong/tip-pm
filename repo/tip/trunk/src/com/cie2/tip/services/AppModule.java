@@ -37,7 +37,6 @@ public class AppModule
 {
     public static void bind(ServiceBinder binder)
     {
-    	binder.bind(PersonService.class);    	
     	binder.bind(LoginService.class);    	
     	binder.bind(CategoryService.class);    	
     	binder.bind(ProjectService.class);    	

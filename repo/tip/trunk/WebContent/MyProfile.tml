@@ -22,9 +22,5 @@
 
 		Last login ${visit.user.lastLogin}
 
-	</t:if>
-		
-	<br/><br/>
-	There's a new <t:pagelink page="listnewtask"> task </t:pagelink> for you!
-	
+	</t:if>	
 </t:layout>
