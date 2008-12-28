@@ -22,15 +22,19 @@ public class TaskService {
 
 	private Session _session;
 
+	// services
 	private ProjectService _projectService;
 
 	private TaskActionService _taskActionService;
 
+	private StatisticsService _statisticsService;
+	
 	public TaskService(Session session, ProjectService projectService,
-			TaskActionService taskActionService) {
+			TaskActionService taskActionService, StatisticsService statisticsService) {
 		_session = session;
 		_projectService = projectService;
 		_taskActionService = taskActionService;
+		_statisticsService = statisticsService;
 	}
 
 	public void addTask(TaskItem taskItem, User currentUser) {
@@ -141,7 +145,7 @@ public class TaskService {
 
 		StartTaskAction taskAction = new StartTaskAction(user, taskItem);
 		_taskActionService.addTaskAction(taskAction);
-
+		_statisticsService.takeTask(taskItem, user);
 		_session.flush();
 	}
 

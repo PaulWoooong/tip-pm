@@ -45,6 +45,7 @@ public class AppModule
     	binder.bind(VoteManager.class);    	
     	binder.bind(UserManagement.class);    	
     	binder.bind(LayoutInfoNotifier.class);
+    	binder.bind(StatisticsService.class);
     	
     	
 //    	binder.bind(TaskDAO.class, TaskDAOImpl.class);

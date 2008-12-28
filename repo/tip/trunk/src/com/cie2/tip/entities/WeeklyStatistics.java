@@ -1,5 +1,6 @@
 package com.cie2.tip.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,8 @@ public class WeeklyStatistics {
 	private Long id;
 	
 	private Integer week;
+
+	private Integer year;
 	
 	private UserProfile userProfile;
 	
@@ -23,9 +26,7 @@ public class WeeklyStatistics {
 	private Integer taskTaken;
 	
 	private Integer taskFinished;
-	
-	private Integer taskStarted;
-	
+		
 	private Integer taskCreated;
 
 	@Id
@@ -47,9 +48,6 @@ public class WeeklyStatistics {
 		return taskFinished;
 	}
 
-	public Integer getTaskStarted() {
-		return taskStarted;
-	}
 
 	public Integer getTaskTaken() {
 		return taskTaken;
@@ -65,6 +63,11 @@ public class WeeklyStatistics {
 		return week;
 	}
 
+	public Integer getYear() {
+		return year;
+	}
+
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -81,10 +84,6 @@ public class WeeklyStatistics {
 		this.taskFinished = taskFinished;
 	}
 
-	public void setTaskStarted(Integer taskStarted) {
-		this.taskStarted = taskStarted;
-	}
-
 	public void setTaskTaken(Integer taskTaken) {
 		this.taskTaken = taskTaken;
 	}
@@ -95,6 +94,10 @@ public class WeeklyStatistics {
 
 	public void setWeek(Integer week) {
 		this.week = week;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
 	}
 	
 }

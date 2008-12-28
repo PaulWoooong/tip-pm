@@ -21,6 +21,9 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>		
+        <!-- configuration pool via c3p0--> 
+		<property name="c3p0.maxIdleTime">25200</property> <!-- seconds = 7 hour--> 
+		        
     </session-factory>
 		    
 </hibernate-configuration>
