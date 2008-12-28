@@ -67,6 +67,7 @@ public class TaskService {
 			_session.persist(userTask);
 		}
 
+		_statisticsService.createTask(taskItem, currentUser);
 		_session.flush();
 
 	}
@@ -96,6 +97,7 @@ public class TaskService {
 						TaskStatus.Available).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<TaskItem> getInVoteTask() {
 		return _session.createCriteria(TaskItem.class).add(
 				Restrictions.eq("taskStatus", TaskStatus.Created)).list();
@@ -155,13 +157,12 @@ public class TaskService {
 
 		taskItem.setTaskStatus(TaskStatus.Finished);
 		taskItem.setLastChangedDate(new Date());
-		user.getCurrentProfile().setTotalPoint(user.getCurrentProfile().getTotalPoint() + taskItem.getPoint());
 		_session.update(taskItem);
-		_session.merge(user);
 
 		FinishTaskAction taskAction = new FinishTaskAction(user, taskItem);
 		_taskActionService.addTaskAction(taskAction);
-
+		_statisticsService.finishTask(taskItem, user);
+		
 		_session.flush();
 	}
 }

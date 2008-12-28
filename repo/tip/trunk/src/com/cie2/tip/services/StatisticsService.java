@@ -60,6 +60,18 @@ public class StatisticsService {
 		
 	}
 	
+	public void createTask(TaskItem taskItem, User user) {
+		DateTime dt = new DateTime();
+
+		WeeklyStatistics ws = load(dt.getWeekOfWeekyear(), dt.getYear(), user
+				.getCurrentProfile());
+
+		ws.setTaskCreated(ws.getTaskCreated() +1);
+		
+		_session.merge(ws);
+		_session.flush();
+	}
+	
 	public void takeTask(TaskItem taskItem, User user) {
 		DateTime dt = new DateTime();
 
@@ -67,6 +79,23 @@ public class StatisticsService {
 				.getCurrentProfile());
 
 		ws.setTaskTaken(ws.getTaskTaken() +1);
+		_session.merge(ws);
+		_session.flush();
+	}
+
+	public void finishTask(TaskItem taskItem, User user) {
+		DateTime dt = new DateTime();
+
+		WeeklyStatistics ws = load(dt.getWeekOfWeekyear(), dt.getYear(), user
+				.getCurrentProfile());
+
+		ws.setTaskFinished(ws.getTaskFinished() +1);
+		ws.setPoint(ws.getPoint() + taskItem.getPoint());
+
+		UserProfile up = user.getCurrentProfile();
+		up.setTotalPoint(up.getTotalPoint() + taskItem.getPoint());
+		
+		_session.merge(up);
 		_session.merge(ws);
 		_session.flush();
 	}
