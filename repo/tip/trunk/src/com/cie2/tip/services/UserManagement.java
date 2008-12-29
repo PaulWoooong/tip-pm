@@ -43,7 +43,8 @@ public class UserManagement {
 		//ambil task yang belum di vote. add to user task
 	}
 	
-	public List getActiveUser() {
+	@SuppressWarnings("unchecked")
+	public List <User> getActiveUser() {
 		return _session.createCriteria(User.class).list();
 	}
 }

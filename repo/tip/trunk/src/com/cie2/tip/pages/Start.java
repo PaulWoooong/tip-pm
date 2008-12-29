@@ -81,7 +81,6 @@ public class Start {
 //		
 		// update login info
 		User user = visit.getUser();
-		user.setLastLogin(new Date());
 		loginService.login(user);
 
 		return MyTask.class;

@@ -1,11 +1,11 @@
 package com.cie2.tip.components;
 
-import java.awt.Paint;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.tapestry5.ComponentResources;
@@ -24,7 +24,6 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.DefaultKeyedValues;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.data.time.Month;
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -111,31 +110,109 @@ public class Chart{
         };
     }
     
-    public StreamResponse onChart(final int width, final int height, Object ...rest) {
+    /**
+     * All manual and highly breakable :(
+     * @param width
+     * @param height
+     * @param weeklyData
+     * @return
+     */
+    public StreamResponse onChart(final int width, final int height,
+			List weeklyData ) {
 
-        final TimeSeries s1 = new TimeSeries("Random Data", Week.class);
-        RegularTimePeriod t = new Week();
-        double v = 100.0;
-        for (int i = 0; i < 10; i++) {
-            s1.add(t, v);
-            v = v * (1 + ((Math.random() - 0.499) / 100.0));
-            t = t.next();
-        }
-        
-        final TimeSeries s2 = new TimeSeries("L&G UK Index Trust", Month.class);
-        s2.add(new Month(2, 2008), 129.6);
-        s2.add(new Month(3, 2008), 123.2);
-        s2.add(new Month(4, 2008), 117.2);
- 
+    	Iterator iter = weeklyData.iterator(); 
+    	iter.next(); // width
+    	iter.next(); // height
         final TimeSeriesCollection dataset = new TimeSeriesCollection();
-        dataset.addSeries(s1);
-        dataset.addSeries(s2);
+    	
+    	while (iter.hasNext()) {
+			String username = (String) iter.next();
+			System.out.println("Element " + username);
+			TimeSeries ts = new TimeSeries(
+					username, Week.class);
+			
+			Integer size = Integer.parseInt(iter.next().toString());
+			if(size > 0) {
+		        RegularTimePeriod t;
+				Integer week;
+				Integer year; 
+				Integer point; 
 
+		        for (int i = 0; i < size; i++) {
+					week = Integer.parseInt(iter.next().toString());
+					year = Integer.parseInt(iter.next().toString());
+					point =  Integer.parseInt(iter.next().toString());
+					
+					System.out.println("week " + week + " year " + year);
+					
+					t = new Week(week, year);
+
+					ts.add(t, point);
+				}
+			}
+
+			dataset.addSeries(ts);
+
+// Object element = iter.next();
+//		         List list = _coercer.coerce(element, List.class);
+//		           
+//				System.out.println(list.size());
+//
+//				for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+//					Object o = (Object) iterator.next();
+//					System.out.println(o);
+//				}
+//				
+//				if (list instanceof List) {
+//					System.out.println("Instance of list");
+//					List userData = (List) list;
+//					final TimeSeries ts = new TimeSeries(
+//							username, Week.class);
+//
+//					for (Iterator iterator = userData.iterator(); iterator
+//							.hasNext();) {
+//						Object wsObject = iterator
+//								.next();
+//						
+//						System.out.println("WS Object " + wsObject);
+//						if(wsObject instanceof WeeklyPoint) {
+//							WeeklyPoint ws = (WeeklyPoint) wsObject;
+//							System.out.println("WS Point " + ws.getPoint());
+//						}
+////				        RegularTimePeriod t = new Week(ws.getWeek(), ws.getYear());
+////				        
+////				        ts.add(t, ws.getPoint());
+////				        System.out.println(t + " " + ws.getPoint());
+//					}
+//					
+//					dataset.addSeries(ts);
+//				}
+//
+		}
+    	
+//        final TimeSeries ts1 = new TimeSeries("Abangkis", Week.class);
+//        RegularTimePeriod t = new Week(50, 2008);
+//
+//        double v = 100.0;
+//        for (int i = 0; i < 10; i++) {
+//            ts1.add(t, v);
+//            v = (Math.random()* 100);
+//            t = t.next();
+//        }
+//        
+//        final TimeSeries s2 = new TimeSeries("Apit", Week.class);
+//        s2.add(new Week(50, 2008), 10);
+//        s2.add(new Week(51, 2008), 50);
+//        s2.add(new Week(52, 2008), 99);
+// 
+//        dataset.addSeries(ts1);
+//        dataset.addSeries(s2);
+//
         dataset.setDomainIsPointsInTime(true);    	
     	
     	 final JFreeChart chart = ChartFactory.createTimeSeriesChart(
-    	            "Legal & General Unit Trust Prices",
-    	            "Date", "Price Per Unit",
+    	            "Task Statistics",
+    	            "Date", "Point",
     	            dataset,
     	            true,
     	            true,
@@ -156,5 +233,54 @@ public class Chart{
             public void prepareResponse(Response response){}
         };
     	
-    }
+    }  
+    
+//    public StreamResponse onChart(final int width, final int height, Object ...rest) {
+//
+//        final TimeSeries s1 = new TimeSeries("Abangkis", Week.class);
+//        RegularTimePeriod t = new Week();
+//        double v = 100.0;
+//        for (int i = 0; i < 10; i++) {
+//            s1.add(t, v);
+//            v = v * (1 + ((Math.random() - 0.499) / 100.0));
+//            t = t.next();
+//        }
+//        
+//        final TimeSeries s2 = new TimeSeries("Apit", Month.class);
+//        s2.add(new Month(2, 2008), 129.6);
+//        s2.add(new Month(3, 2008), 123.2);
+//        s2.add(new Month(4, 2008), 117.2);
+// 
+//        final TimeSeriesCollection dataset = new TimeSeriesCollection();
+//        dataset.addSeries(s1);
+//        dataset.addSeries(s2);
+//
+//        dataset.setDomainIsPointsInTime(true);    	
+//    	
+//    	 final JFreeChart chart = ChartFactory.createTimeSeriesChart(
+//    	            "Task Statistics",
+//    	            "Date", "Point",
+//    	            dataset,
+//    	            true,
+//    	            true,
+//    	            false
+//    	        );
+//    	 
+//    	 
+//        return new StreamResponse(){
+//            public String getContentType(){
+//                return "image/png";
+//            }
+//            public InputStream getStream() throws IOException {
+//                BufferedImage image  = chart.createBufferedImage(width, height);
+//                ByteArrayOutputStream byteArray = new ByteArrayOutputStream() ;
+//                ChartUtilities.writeBufferedImageAsPNG(byteArray, image) ;
+//                return new ByteArrayInputStream(byteArray.toByteArray());
+//            }
+//            public void prepareResponse(Response response){}
+//        };
+//    	
+//    }
+    
+
 }

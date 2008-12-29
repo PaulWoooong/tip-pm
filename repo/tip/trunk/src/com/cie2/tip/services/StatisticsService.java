@@ -1,5 +1,8 @@
 package com.cie2.tip.services;
 
+import java.util.Date;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -98,5 +101,21 @@ public class StatisticsService {
 		_session.merge(up);
 		_session.merge(ws);
 		_session.flush();
+	}
+
+	public List getStatistics(User user, Date start, Date end) {
+		UserProfile up = user.getCurrentProfile();
+		
+		DateTime dt = new DateTime(start);
+		int startWeek = dt.getWeekOfWeekyear();
+		System.out.println("Start Week : " + startWeek);
+		dt = new DateTime(end);
+		int endWeek = dt.getWeekOfWeekyear();
+		System.out.println("End Week : " + endWeek);
+		
+		return _session.createCriteria(WeeklyStatistics.class)
+		.add(Restrictions.eq("userProfile", up))
+		.add(Restrictions.between("week", startWeek, endWeek))
+		.list();		
 	}
 }

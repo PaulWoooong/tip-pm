@@ -1,5 +1,7 @@
 package com.cie2.tip.services;
 
+import java.util.Date;
+
 import javax.security.auth.login.LoginException;
 
 import org.hibernate.Session;
@@ -37,6 +39,8 @@ public class LoginService {
 	}
 	
 	public void login(User user) {
+		user.setLastLogin(new Date());
+		// bisa tambahin status isLogin
 		_session.merge(user);		
 		_session.flush();
 	}

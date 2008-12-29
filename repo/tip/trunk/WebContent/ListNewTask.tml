@@ -8,14 +8,12 @@
 			${taskItem.category.name}
 		</t:parameter>
 		<t:parameter name="castVoteCell">
-	 	<t:if test="visit.user">
-	 		<t:if test="visit.user.currentprofile.ableToVote">
-				<t:actionlink t:id="voteUp" context="taskItem.id">Vote Up</t:actionlink>
-				<br/>
-				<br/>
-				<t:actionlink t:id="voteDown" context="taskItem.id">Vote Down</t:actionlink>				
-	        </t:if>
-		</t:if>
+		<t:if test="visit?.user?.currentprofile?.ableToVote">
+			<t:actionlink t:id="voteUp" context="taskItem.id">Vote Up</t:actionlink>
+			<br/>
+			<br/>
+			<t:actionlink t:id="voteDown" context="taskItem.id">Vote Down</t:actionlink>				
+	    </t:if>
 		</t:parameter>    	
 
     </t:grid>        

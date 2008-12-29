@@ -3,9 +3,7 @@
     	model="model" reorder="parentCategory">
     	
     	<t:parameter name="parentCategoryCell">
-    		<t:if test="${category.parentCategory}">
-    			${category.parentCategory.name}
-    		</t:if>
+    		${category?.parentCategory?.name}
     	</t:parameter>
     </t:grid>        
 </t:layout>
