@@ -36,9 +36,11 @@ public class StatisticsService {
 
 			if(dt.weekOfWeekyear().get() >= week) { // year blom masuk constrain
 				logger.info("Creating Week: " + week + " of year: " + year);
+				logger.info("from datetime: " + dt);
 				
 				ws = new WeeklyStatistics();
 				
+				ws.setDate(dt.toDate());
 				ws.setWeek(week);
 				ws.setYear(year);
 				ws.setUserProfile(up);
@@ -103,6 +105,7 @@ public class StatisticsService {
 		_session.flush();
 	}
 
+	/** need tune up **/
 	public List getStatistics(User user, Date start, Date end) {
 		UserProfile up = user.getCurrentProfile();
 		
@@ -116,6 +119,20 @@ public class StatisticsService {
 		return _session.createCriteria(WeeklyStatistics.class)
 		.add(Restrictions.eq("userProfile", up))
 		.add(Restrictions.between("week", startWeek, endWeek))
+		.list();		
+	}
+	
+	public List getPastThreeMonthStatistic(User user) {
+		UserProfile up = user.getCurrentProfile();
+
+		DateTime today = new DateTime();
+		DateTime prevTreeMonth = today.minusMonths(3);
+		
+		logger.info(" getting statistics from Today " + today + " to " + prevTreeMonth);
+		
+		return _session.createCriteria(WeeklyStatistics.class)
+		.add(Restrictions.eq("userProfile", up))
+		.add(Restrictions.between("date", prevTreeMonth.toDate(), today.toDate()))
 		.list();		
 	}
 }

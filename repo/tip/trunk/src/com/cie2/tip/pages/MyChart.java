@@ -3,6 +3,7 @@ package com.cie2.tip.pages;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,17 +33,19 @@ public class MyChart extends CieUserPage {
 		List list = new ArrayList();
 		List userList = _userManagement.getActiveUser();
 
-		Calendar cal = Calendar.getInstance();
-		cal.set(2008, 10, 10);
-		Date startDate = cal.getTime();
-// kenapa ngaco dapet weeknya ? 
-		cal.set(2008, 11, 25);
-		Date endDate = cal.getTime();
-		
+//		Calendar cal = GregorianCalendar.getInstance();
+//		cal.set(2008, 10, 10);
+//		Date startDate = cal.getTime();
+//// kenapa ngaco dapet weeknya ? 
+////		cal.set(2008, 12, 25);
+////		Date endDate = cal.getTime();
+//		Date endDate = new Date();
+//		
 		for (Iterator iter = userList.iterator(); iter.hasNext();) {
 			User user = (User) iter.next();
 			list.add(user.getUsername());
-			List userStatistics = _statisticsService.getStatistics(user, startDate, endDate);
+			List userStatistics = _statisticsService.getPastThreeMonthStatistic(user);
+
 			list.add(userStatistics.size() + 3);
 			for (int i=0; i<3; i++) {
 				list.add(40 + i);

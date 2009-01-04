@@ -1,5 +1,6 @@
 package com.cie2.tip.components;
 
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.Link;
 import org.apache.tapestry5.MarkupWriter;
@@ -21,6 +23,10 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.Plot;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.DefaultKeyedValues;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
@@ -30,6 +36,9 @@ import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.Week;
 
 public class Chart{
+	
+	static Logger logger = 
+		Logger.getLogger(Chart.class.getName());
     
     /**list(array) of paired values(label & value): [String,Number,String,Number,...]*/
     @Parameter(required=true)
@@ -120,6 +129,7 @@ public class Chart{
     public StreamResponse onChart(final int width, final int height,
 			List weeklyData ) {
 
+    	// prepare the dataset
     	Iterator iter = weeklyData.iterator(); 
     	iter.next(); // width
     	iter.next(); // height
@@ -127,7 +137,6 @@ public class Chart{
     	
     	while (iter.hasNext()) {
 			String username = (String) iter.next();
-			System.out.println("Element " + username);
 			TimeSeries ts = new TimeSeries(
 					username, Week.class);
 			
@@ -143,7 +152,7 @@ public class Chart{
 					year = Integer.parseInt(iter.next().toString());
 					point =  Integer.parseInt(iter.next().toString());
 					
-					System.out.println("week " + week + " year " + year);
+					logger.debug("week " + week + " year " + year);
 					
 					t = new Week(week, year);
 
@@ -153,61 +162,8 @@ public class Chart{
 
 			dataset.addSeries(ts);
 
-// Object element = iter.next();
-//		         List list = _coercer.coerce(element, List.class);
-//		           
-//				System.out.println(list.size());
-//
-//				for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-//					Object o = (Object) iterator.next();
-//					System.out.println(o);
-//				}
-//				
-//				if (list instanceof List) {
-//					System.out.println("Instance of list");
-//					List userData = (List) list;
-//					final TimeSeries ts = new TimeSeries(
-//							username, Week.class);
-//
-//					for (Iterator iterator = userData.iterator(); iterator
-//							.hasNext();) {
-//						Object wsObject = iterator
-//								.next();
-//						
-//						System.out.println("WS Object " + wsObject);
-//						if(wsObject instanceof WeeklyPoint) {
-//							WeeklyPoint ws = (WeeklyPoint) wsObject;
-//							System.out.println("WS Point " + ws.getPoint());
-//						}
-////				        RegularTimePeriod t = new Week(ws.getWeek(), ws.getYear());
-////				        
-////				        ts.add(t, ws.getPoint());
-////				        System.out.println(t + " " + ws.getPoint());
-//					}
-//					
-//					dataset.addSeries(ts);
-//				}
-//
 		}
     	
-//        final TimeSeries ts1 = new TimeSeries("Abangkis", Week.class);
-//        RegularTimePeriod t = new Week(50, 2008);
-//
-//        double v = 100.0;
-//        for (int i = 0; i < 10; i++) {
-//            ts1.add(t, v);
-//            v = (Math.random()* 100);
-//            t = t.next();
-//        }
-//        
-//        final TimeSeries s2 = new TimeSeries("Apit", Week.class);
-//        s2.add(new Week(50, 2008), 10);
-//        s2.add(new Week(51, 2008), 50);
-//        s2.add(new Week(52, 2008), 99);
-// 
-//        dataset.addSeries(ts1);
-//        dataset.addSeries(s2);
-//
         dataset.setDomainIsPointsInTime(true);    	
     	
     	 final JFreeChart chart = ChartFactory.createTimeSeriesChart(
@@ -219,6 +175,27 @@ public class Chart{
     	            false
     	        );
     	 
+    	// render the chart the way we like it
+    	   XYPlot plot = (XYPlot) chart.getPlot();
+//           plot.setBackgroundPaint(Color.lightGray);
+//           plot.setDomainGridlinePaint(Color.white);
+//           plot.setRangeGridlinePaint(Color.white);
+//           plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
+//           plot.setDomainCrosshairVisible(true);
+//           plot.setRangeCrosshairVisible(true);
+           
+                     
+           XYItemRenderer r = plot.getRenderer();
+           if (r instanceof XYLineAndShapeRenderer) {
+               XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) r;
+               renderer.setBaseShapesVisible(true);
+               renderer.setBaseShapesFilled(false);
+               renderer.setBaseShape(Plot.DEFAULT_LEGEND_ITEM_CIRCLE);
+           }
+           
+//           DateAxis axis = (DateAxis) plot.getDomainAxis();
+//           axis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
+           
     	 
         return new StreamResponse(){
             public String getContentType(){

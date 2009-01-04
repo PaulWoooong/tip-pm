@@ -1,5 +1,7 @@
 package com.cie2.tip.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,8 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 public class WeeklyStatistics {
 
 	private Long id;
+	
+	private Date date;
 	
 	private Integer week;
 
@@ -66,7 +70,10 @@ public class WeeklyStatistics {
 		return year;
 	}
 
-	
+	public Date getDate() {
+		return date;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -97,6 +104,11 @@ public class WeeklyStatistics {
 
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 }
