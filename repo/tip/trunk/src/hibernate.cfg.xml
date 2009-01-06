@@ -22,8 +22,14 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>		
         <!-- configuration pool via c3p0--> 
-		<property name="c3p0.maxIdleTime">25200</property> <!-- seconds = 7 hour--> 
-		        
+		<property name="c3p0.maxIdleTime">25200</property> <!-- seconds = 7 hour--> 	
+		<property name="c3p0.acquire_increment">3</property>
+		<property name="c3p0.idle_test_period">14400</property>
+		<property name="c3p0.timeout">25200</property>
+		<property name="c3p0.max_size">15</property>
+		<property name="c3p0.min_size">3</property>
+		<property name="c3p0.max_statements">0</property>
+		<property name="c3p0.preferredTestQuery">select 1;</property>
     </session-factory>
 		    
 </hibernate-configuration>
