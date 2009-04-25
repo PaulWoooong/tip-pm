@@ -4,8 +4,10 @@
 		</t:beandisplay>
 
 		<table width="100%">
+			<tr>
 			<th>Action</th>
 			<th></th>
+			</tr>
 			<t:loop source="taskActions" value="taskAction"> 
 				<tr>
 					<td>${taskAction.createdDate}: </td>
@@ -18,10 +20,10 @@
 				</tr>
 				<t:loop source="taskAction.taskComments" value="taskComment">
 				<tr>
-				<td align="right">
+				<td align="right" valign="top">
 					${taskComment.user.userName}: 
 				</td>
-				<td>
+				<td>	
 					${taskComment.comment}
 				</td>
 				</tr>

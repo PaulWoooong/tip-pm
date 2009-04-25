@@ -1,14 +1,15 @@
 package com.cie2.tip.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import com.cie2.tip.entities.TaskAction;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.UserTask;
@@ -24,7 +25,7 @@ public class TaskService {
 
 	// services
 	private ProjectService _projectService;
-
+//
 	private TaskActionService _taskActionService;
 
 	private StatisticsService _statisticsService;
@@ -88,13 +89,15 @@ public class TaskService {
 	// tapi udah default dari usernya ?
 	@SuppressWarnings("unchecked")
 	public List<TaskItem> getUnvotedTask(User currentUser) {
-		return _session
+		Query query = _session
 				.createQuery(
 						"select task from UserTask ut inner join ut.task as task where ut.user=?"
 								+ " and ut.voted=? and (task.taskStatus=? or task.taskStatus=?)")
 				.setParameter(0, currentUser).setParameter(1, false)
 				.setParameter(2, TaskStatus.Created).setParameter(3,
-						TaskStatus.Available).list();
+						TaskStatus.Available);
+		
+		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -128,6 +131,17 @@ public class TaskService {
 				Restrictions.eq("taskStatus", TaskStatus.Finished)).list();
 	}
 
+//	public void getFinishedTaskGrid() {
+//		HibernateGridDataSource ds = new HibernateGridDataSource(_session,TaskItem.class);
+//	}
+	
+	
+//	public GridDataSource getUnvoDataSource(User currentUser) {
+//		HibernateGridDataSource datasource = new HibernateGridDataSource(_session, UserTask.class);
+//		datasource.prepare(arg0, arg1, arg2)
+//		return (GridDataSource) datasource;
+//	}
+	
 	@SuppressWarnings("unchecked")
 	public List<TaskItem> getFinishedTask(User user) {
 		return _session.createCriteria(TaskItem.class).add(
@@ -135,6 +149,7 @@ public class TaskService {
 				Restrictions.eq("workBy", user)).list();
 	}
 
+	
 	public void takeTask(Long id, User user) {
 		TaskItem taskItem = (TaskItem) _session.get(TaskItem.class, id);
 		Date today = new Date();
@@ -165,4 +180,5 @@ public class TaskService {
 		
 		_session.flush();
 	}
+	/**/
 }

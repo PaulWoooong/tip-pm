@@ -32,38 +32,42 @@
 <div class="menutop"> </div>
 
 <div class="menumiddle"> 
+ 
 <h2>Tasks: </h2>
 <ul>
-<li><t:pagelink page="createTask">Add Task</t:pagelink></li>
-<li><t:pagelink page="listnewtask">New Task</t:pagelink></li>
-<li><t:pagelink page="listTask">Available Task</t:pagelink></li>
-<li><t:pagelink page="myTask">My Task</t:pagelink></li>
-<li><t:pagelink page="listFinishedTask">Finished Task</t:pagelink></li>
+<li><a t:type="pagelink" page="listAllTask">All Task</a></li>
+<li><a t:type="pagelink" page="createTask">Add Task</a></li>
+<li><a t:type="pagelink" page="listnewtask">New Task</a></li>
+<li><a t:type="pagelink" page="listTask">Available Task</a></li>
+<li><a t:type="pagelink" page="myTask">My Task</a></li>
+<li><a t:type="pagelink" page="listFinishedTask">Finished Task</a></li>
+
 </ul>	    
 
 <h2> Other </h2>
 <ul>
-<li><t:pagelink page="listInVoteTask">Show In Vote Task</t:pagelink></li>	
-<li><t:pagelink page="listOtherTask">Show All Task</t:pagelink></li>	
+<li><a t:type="pagelink" page="listInVoteTask">Show In Vote Task</a></li>	
+<li><a t:type="pagelink" page="listOtherTask">Show All Task</a></li>	
 </ul>
 
 <h2> Profile </h2>
 <ul>
-<li><t:pagelink page="myProfile">My Profile</t:pagelink></li>
-<li><t:pagelink page="Roadmap">Roadmap</t:pagelink></li>
-<li><t:pagelink page="myChart">Reports</t:pagelink></li>
+<li><a t:type="pagelink" page="myProfile">My Profile</a></li>
+<li><a t:type="pagelink" page="Roadmap">Roadmap</a></li>
+<li><a t:type="pagelink" page="myChart">Reports</a></li>
 </ul>
 
 <t:if test="isAdmin()"> 
 <h2>Admin </h2>
 <ul>
-	<li><t:pagelink page="admin">admin</t:pagelink></li> 
+	<li><a t:type="pagelink" page="admin">admin</a></li> 
 </ul>
 </t:if>
 
 <t:if test="isAutoLogin()" >
 <h2> <font color="red"> Auto Login Is On </font> </h2>
 </t:if>
+
 </div>
 
 <div class="menubottom"> </div>

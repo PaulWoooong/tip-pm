@@ -36,7 +36,7 @@ public class ListCategory extends CieUserPage {
 	}
 
 	public BeanModel getModel() {
-		BeanModel model = beanModelSource.create(Category.class, false,
+		BeanModel model = beanModelSource.createEditModel(Category.class, 
 				messages);
 		model.add("parentCategory", null);
 		return model;

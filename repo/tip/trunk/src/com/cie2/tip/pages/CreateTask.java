@@ -8,7 +8,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.services.PropertyAccess;
-import org.hibernate.Session;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.Category;

@@ -38,18 +38,10 @@ public class ListFinishedTask extends CieUserPage{
 	}
 	
 	public BeanModel getModel() {
-		BeanModel model = beanModelSource.create(TaskItem.class, false,
+		BeanModel model = beanModelSource.createDisplayModel(TaskItem.class, 
 				messages);
 		model.add("category", null);
 		return model;
-	}
-
-	public TaskItem getTaskItem() {
-		return taskItem;
-	}
-
-	public void setTaskItem(TaskItem taskItem) {
-		this.taskItem = taskItem;
 	}
 
 }

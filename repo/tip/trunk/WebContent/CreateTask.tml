@@ -9,8 +9,10 @@
 			<t:select id="select" model="myModel" t:value="categoryId" t:validate="required"></t:select><br/>
     	</t:parameter>
     </t:beaneditform>	
-	<!--
-	<t:form t:id="taskForm"> 
+	
+	<!-- 
+	<form t:type="form" t:id="taskForm" style="border: medium solid gray">
+		<t:errors/>
 	    <div class="t-beaneditor-row">
 	    <t:label for="select" >Parent Category</t:label>
 		<t:select id="select" model="myModel" t:value="categoryId" t:validate="required"></t:select><br/>
@@ -18,6 +20,6 @@
 	    <t:beaneditor t:id="taskEditor" object="taskItem" 
 	    	exclude="taskStatus, taskType, voteUp, voteDown, point"/>
 	<input type="submit" value="save changes"/>    
-	</t:form>
-	-->
+	</form>
+	-->	
 </t:layout>

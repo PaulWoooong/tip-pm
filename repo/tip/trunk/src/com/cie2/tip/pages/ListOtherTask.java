@@ -51,7 +51,7 @@ public class ListOtherTask extends CieUserPage {
 	}
 
 	public BeanModel getModel() {
-		BeanModel model = beanModelSource.create(TaskItem.class, false,
+		BeanModel model = beanModelSource.createEditModel(TaskItem.class, 
 				messages);
 		model.add("user", null);
 		model.add("category", null);
@@ -76,13 +76,6 @@ public class ListOtherTask extends CieUserPage {
 
     public void setTaskStatus(TaskStatusLimited status) { _status = status; }
 
-	public TaskItem getTaskItem() {
-		return taskItem;
-	}
-
-	public void setTaskItem(TaskItem taskItem) {
-		this.taskItem = taskItem;
-	}
 
 	
 }

@@ -2,11 +2,9 @@ package com.cie2.tip.services;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.entities.UserTask;
 import com.cie2.tip.entities.TaskItem.TaskStatus;
 
 public class VoteManager {

@@ -46,13 +46,16 @@ public class MyChart extends CieUserPage {
 			list.add(user.getUsername());
 			List userStatistics = _statisticsService.getPastThreeMonthStatistic(user);
 
-			list.add(userStatistics.size() + 3);
-			for (int i=0; i<3; i++) {
-				list.add(40 + i);
-				list.add(2008);
-				list.add(3);
-			}
 			
+//			list.add(userStatistics.size() + 3);
+//			for (int i=0; i<3; i++) {
+//				list.add(40 + i);
+//				list.add(2008);
+//				list.add(3);
+//			}
+//			
+			
+			list.add(userStatistics.size());
 			for (Iterator iterator = userStatistics.iterator(); iterator.hasNext();) {
 				WeeklyStatistics ws = (WeeklyStatistics) iterator.next();
 				list.add(ws.getWeek());

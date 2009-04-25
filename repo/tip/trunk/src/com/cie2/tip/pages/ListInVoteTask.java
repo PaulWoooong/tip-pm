@@ -42,7 +42,7 @@ public class ListInVoteTask extends CieUserPage {
 	}
 
     public BeanModel getModel() {
-        BeanModel model = beanModelSource.create(TaskItem.class, false, messages);
+        BeanModel model = beanModelSource.createDisplayModel(TaskItem.class, messages);
         model.add("category", null);
         return model;
     }		

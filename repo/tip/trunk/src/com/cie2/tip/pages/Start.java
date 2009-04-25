@@ -1,7 +1,5 @@
 package com.cie2.tip.pages;
 
-import java.util.Date;
-
 import javax.security.auth.login.LoginException;
 
 import org.apache.log4j.Logger;
@@ -83,7 +81,8 @@ public class Start {
 		User user = visit.getUser();
 		loginService.login(user);
 
-		return MyTask.class;
+//		return ListAllTask.class;
+		return MyProfile.class;
 	}
 
 }

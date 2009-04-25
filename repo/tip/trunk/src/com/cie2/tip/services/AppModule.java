@@ -47,7 +47,6 @@ public class AppModule
     	binder.bind(LayoutInfoNotifier.class);
     	binder.bind(StatisticsService.class);
     	
-    	
 //    	binder.bind(TaskDAO.class, TaskDAOImpl.class);
         
         // Make bind() calls on the binder object to define most IoC services.

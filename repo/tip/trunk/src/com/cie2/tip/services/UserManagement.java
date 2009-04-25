@@ -12,7 +12,7 @@ import com.cie2.tip.entities.UserProfile;
 public class UserManagement {
 
 	static Logger logger = 
-		Logger.getLogger(TaskService.class.getName());
+		Logger.getLogger(UserManagement.class.getName());
 	
 	private Session _session;
 

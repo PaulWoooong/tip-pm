@@ -1,6 +1,5 @@
 package com.cie2.tip.pages;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.tapestry5.annotations.Property;

@@ -1,0 +1,81 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2>${visit.user.username} Task </h2>
+	<table t:type="grid" t:source="myTask" t:row="taskitem" t:model="myTaskModel" t:pagerPosition="both"
+		t:exclude="taskStatus, taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="titleCell">
+   			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
+ 		</t:parameter>    	    	
+		<t:parameter name="addActionCell">
+   			<t:pagelink page="CreateTaskAction" context="taskItem.id">Add Action</t:pagelink>
+        </t:parameter>    	
+		<t:parameter name="finishCell">
+			<t:actionlink t:id="finish" context="taskItem.id">Finish</t:actionlink>
+        </t:parameter>      
+ 	</table>  
+ 	
+	<h2>New Task</h2>
+	<table t:type="grid" t:source="newTask" t:row="taskitem" t:model="newTaskModel" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="castVoteCell">
+			<t:if test="visit?.user?.currentprofile?.ableToVote">
+				<t:actionlink t:id="voteUp" context="taskItem.id">Vote Up</t:actionlink>
+				<br />
+				<br />
+				<t:actionlink t:id="voteDown" context="taskItem.id">Vote Down</t:actionlink>
+			</t:if>
+		</t:parameter> 
+ 	</table>  
+	
+	<h2>Available Task</h2>
+	<table t:type="grid" t:source="availableTask" t:row="taskitem" t:model="availableTaskModel" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="takeTaskCell">
+			<t:actionlink t:id="takeTask" context="taskItem.id">Take Task</t:actionlink>
+		</t:parameter>
+ 	</table> 		
+ 	
+	<h2>List In Vote Task</h2>
+	<table t:type="grid" t:source="inVoteTask" t:row="taskitem" t:model="inVoteModel" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+ 	</table> 	
+    
+    <h2> List Worked On Task </h2>
+	<table t:type="grid" t:source="workedOnTask" t:row="taskitem" t:model="otherModel" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="titleCell">
+   			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
+ 		</t:parameter>    	
+		<t:parameter name="userCell">
+			${taskItem.workBy.username}
+		</t:parameter>    			
+ 	</table> 	
+
+    <h2> List Finished Task </h2>
+	<table t:type="grid" t:source="finishedTask" t:row="taskitem" t:model="otherModel" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="titleCell">
+   			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
+ 		</t:parameter>    	
+		<t:parameter name="userCell">
+			${taskItem.workBy.username}
+		</t:parameter>    			
+ 	</table> 	
+</t:layout>

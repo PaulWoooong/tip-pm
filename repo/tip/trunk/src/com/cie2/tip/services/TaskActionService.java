@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -12,7 +11,6 @@ import com.cie2.tip.entities.TaskAction;
 import com.cie2.tip.entities.TaskComment;
 import com.cie2.tip.entities.TaskItem;
 import com.cie2.tip.entities.User;
-import com.cie2.tip.entities.TaskItem.TaskStatus;
 import com.cie2.tip.services.actions.ITaskAction;
 
 public class TaskActionService {
@@ -22,9 +20,6 @@ public class TaskActionService {
 	
 	private Session _session;
 		
-	@Inject 
-	TaskService taskService;
-	
 	public TaskActionService(Session session) {
 		_session = session;
 	}

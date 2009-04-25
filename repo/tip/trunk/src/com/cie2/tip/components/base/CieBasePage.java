@@ -20,7 +20,7 @@ public class CieBasePage {
 	private Visit visit;
 		
 	@Inject
-	private LoginService securityFinder;
+	private LoginService loginService;
 	
 	@Inject
 	private LayoutInfoNotifier layoutInfo;
@@ -54,7 +54,7 @@ public class CieBasePage {
 	 */
 	private void autoLogin(Long userId) {
 		try {
-			User user = securityFinder.findUser(userId);
+			User user = loginService.findUser(userId);
 
 			visit = new Visit();
 			visit.setUser(user);

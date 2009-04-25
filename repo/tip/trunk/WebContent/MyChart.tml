@@ -1,6 +1,6 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
 
-	<t:chart width="400" height="300" context="chartData" popup="popupSize"/>
+	<t:chart width="600" height="450" context="chartData" popup="popupSize"/>
 
 	<br/>
 	Users :
