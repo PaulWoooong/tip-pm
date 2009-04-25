@@ -1,0 +1,9 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	List Of Finished Task
+	<table t:type="grid" t:source="taskItems" t:row="taskitem" t:model="model" t:pagerPosition="both"
+		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+ 	</table>
+</t:layout>

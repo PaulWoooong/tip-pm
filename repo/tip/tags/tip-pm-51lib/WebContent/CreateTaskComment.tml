@@ -1,0 +1,14 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> Previous Comments </h2>
+		<table>
+			<t:loop source="taskComments" value="taskCommentItem"> 
+				<tr>
+					<td>${taskCommentItem.user.userName}: </td>
+					<td>${taskCommentItem.comment}</td>
+				</tr>
+			</t:loop>
+		</table>
+	<br/>	
+	<h2> Create Task Comment </h2>
+    <t:beaneditform submitlabel="Save Changes" object="taskComment" exclude="createdDate"/>	
+</t:layout>

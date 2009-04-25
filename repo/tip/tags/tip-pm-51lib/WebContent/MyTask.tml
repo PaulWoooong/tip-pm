@@ -1,0 +1,19 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	${visit.user.username} Task
+
+	<table t:type="grid" t:source="taskItems" t:row="taskitem" t:model="model" t:pagerPosition="both"
+		t:exclude="taskStatus, taskType" t:reorder="title, category">[Grid here]
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    	
+		<t:parameter name="titleCell">
+   			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
+ 		</t:parameter>    	    	
+		<t:parameter name="addActionCell">
+   			<t:pagelink page="CreateTaskAction" context="taskItem.id">Add Action</t:pagelink>
+        </t:parameter>    	
+		<t:parameter name="finishCell">
+			<t:actionlink t:id="finish" context="taskItem.id">Finish</t:actionlink>
+        </t:parameter>    
+ 	</table>
+</t:layout>

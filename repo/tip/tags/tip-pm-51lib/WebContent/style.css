@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+} 
+
+body {
+background: #54B7E0;
+font-family: Verdana, Tahoma, Arial, sans-serif;
+font-size: 12px;
+padding: 0;
+margin: 0;
+color: #333;
+line-height: 17px;
+}
+
+img { border: none;}
+a { color: #0090DF; text-decoration: none; }
+a:hover { color : #000}
+
+#wrap {
+margin: 20px auto;
+width: 860px;
+}
+
+#header {
+#background: #fff url(images/header.jpg) no-repeat;
+background: #fff ;
+height: 90px;
+}
+
+#header h1 { 
+color : #54B7E0;
+font-size: 29px;
+letter-spacing: -2px;
+padding: 30px 0 0 30px;
+font-weight: 100;
+font-family: Arial, Tahoma, Verdana;
+}
+#header h1 a { text-decoration: none; color : #54B7E0;}
+#header h1 a:hover { color : #333; }
+#header h2 { 
+font-family: Arial, Tahoma, Verdana;
+color : #777;
+font-size: 15px;
+padding: 0 0 0 30px;
+font-weight: 100;
+}
+
+#navigation {
+#background: #FF9817 url(images/menu.jpg) no-repeat;
+background: #FF9817 ;
+height: 30px;
+line-height: 30px;
+padding-left: 10px;
+}
+#navigation li {
+float:left;
+list-style-type:none;
+border-right:1px solid #FFA73F;
+}
+#navigation li a {
+display:block;
+padding:0 20px;
+text-transform:uppercase;
+text-decoration:none;
+color: #f7f7f7;
+letter-spacing:2px;
+}
+#navigation li a:hover {
+background: #FFAF4C url(images/menuover.jpg) repeat-x;
+color:#fff;
+text-decoration:none;
+}
+
+#content { 
+background: #fff;
+#background: #fff url(images/content.jpg) repeat-y;
+#padding: 10px 10px;
+}
+
+#bottom { 
+#background: #fff url(images/bottom.jpg) no-repeat; 
+background: #fff; 
+height: 20px;
+}
+
+
+#left {
+float:left; 
+width:220px; 
+text-align: justify;
+#padding-left: 5px;
+}
+.menutop {
+background: #FFF6BB url(images/menutop.jpg) no-repeat;
+height: 20px;
+}
+.menumiddle {
+background: #FFF6BB url(images/menumiddle.jpg) repeat-y;
+}
+.menumiddle h2 { color : #777; font-weight: 600; font-size: 12px; padding-top: 7px; padding-left: 20px; padding-bottom: 3px; }
+.menumiddle ul { letter-spacing: -1px; color : #aaa; padding-left: 40px; }
+.menubottom { 
+background: #FFF6BB url(images/menubottom.jpg) no-repeat;
+height: 20px;
+}
+
+#right {
+float:right; 
+width:620px; 
+padding-right: 10px;
+padding-top: 10px;
+}
+#right h2 { letter-spacing: -1px; padding: 15px 0 5px 0; font-family: Arial, Tahoma, Verdana; font-weight: 600; font-size: 17px; color: #54B7E0;}
+#right h2 a { color: #54B7E0; }
+#right h2 a:hover { color: #000; }
+
+#footer {
+text-align: center;
+font-size: 10px;
+color: #444;
+padding:0 0 10px 0;
+margin: 0;
+}
+#footer a { color: #666; text-decoration: underline;}
+#footer a:hover { color: #000; text-decoration: none; }

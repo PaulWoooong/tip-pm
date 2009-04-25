@@ -1,0 +1,10 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<h2>Admin </h2>
+<ul>
+	<li><t:pagelink page="createUser">Create User</t:pagelink></li> 
+	<li><t:pagelink page="createCategory">Create Category</t:pagelink></li> 
+	<li><t:pagelink page="listCategory">List Category</t:pagelink></li> 
+	<li><t:pagelink page="createProject">Create Project</t:pagelink></li> 
+</ul>
+
+</t:layout>

@@ -1,0 +1,25 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> Create Task </h2>
+    <t:beaneditform submitlabel="Save Changes" object="taskitem" add="select"
+	    	exclude="taskStatus, taskType, voteUp, voteDown, point"
+	    	reorder="select">
+
+    	<t:parameter name="select">
+	    	<t:label for="select" >Parent Category</t:label>
+			<t:select id="select" model="myModel" t:value="categoryId" t:validate="required"></t:select><br/>
+    	</t:parameter>
+    </t:beaneditform>	
+	
+	<!-- 
+	<form t:type="form" t:id="taskForm" style="border: medium solid gray">
+		<t:errors/>
+	    <div class="t-beaneditor-row">
+	    <t:label for="select" >Parent Category</t:label>
+		<t:select id="select" model="myModel" t:value="categoryId" t:validate="required"></t:select><br/>
+		</div>
+	    <t:beaneditor t:id="taskEditor" object="taskItem" 
+	    	exclude="taskStatus, taskType, voteUp, voteDown, point"/>
+	<input type="submit" value="save changes"/>    
+	</form>
+	-->	
+</t:layout>

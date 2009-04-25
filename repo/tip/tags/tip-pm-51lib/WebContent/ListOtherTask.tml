@@ -1,0 +1,24 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+
+	<t:form>
+	<t:label for="taskStatus"/>:
+	<t:select t:id="taskStatus"/>
+    <input type="submit" value="Filter"/>
+    	
+    <t:grid  source="taskItems" row="taskItem" pagerPosition="both" model="model"
+    	exclude="taskType"
+    	reorder="title, category">
+
+		<t:parameter name="categoryCell">
+			${taskItem.category.name}
+		</t:parameter>    			
+		<t:parameter name="titleCell">
+   			<t:pagelink page="TaskItemDetail" context="taskItem.id">${taskItem.title}</t:pagelink>
+ 		</t:parameter>    	
+		<t:parameter name="userCell">
+			${taskItem.workBy.username}
+		</t:parameter>    	
+    
+    </t:grid>
+    </t:form>        
+</t:layout>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>T.I.P</title>
+</head>
+<body>
+<div id="wrap">
+
+<div id="header"> 
+<h1><a href="#">Task.Incentive.Program</a></h1>
+<br/>
+<h2>Don't forget to tip</h2>
+</div>
+
+<div id="navigation">
+<ul>
+<li><a href="userpage">Home</a></li> 
+<li><a href="#">Page one</a></li> 
+<li><a href="#">Another page</a></li> 
+<li><a t:type="actionlink" t:id="LogOut" href="#">Log Out</a></li>
+</ul>
+</div>
+
+
+<div id="content">
+
+<div id="right">
+	<t:body/>
+</div>
+
+<div id="left">
+<div class="menutop"> </div>
+
+<div class="menumiddle"> 
+ 
+<h2>Tasks: </h2>
+<ul>
+<li><a t:type="pagelink" page="listAllTask">All Task</a></li>
+<li><a t:type="pagelink" page="createTask">Add Task</a></li>
+<li><a t:type="pagelink" page="listnewtask">New Task</a></li>
+<li><a t:type="pagelink" page="listTask">Available Task</a></li>
+<li><a t:type="pagelink" page="myTask">My Task</a></li>
+<li><a t:type="pagelink" page="listFinishedTask">Finished Task</a></li>
+
+</ul>	    
+
+<h2> Other </h2>
+<ul>
+<li><a t:type="pagelink" page="listInVoteTask">Show In Vote Task</a></li>	
+<li><a t:type="pagelink" page="listOtherTask">Show All Task</a></li>	
+</ul>
+
+<h2> Profile </h2>
+<ul>
+<li><a t:type="pagelink" page="myProfile">My Profile</a></li>
+<li><a t:type="pagelink" page="Roadmap">Roadmap</a></li>
+<li><a t:type="pagelink" page="myChart">Reports</a></li>
+</ul>
+
+<t:if test="isAdmin()"> 
+<h2>Admin </h2>
+<ul>
+	<li><a t:type="pagelink" page="admin">admin</a></li> 
+</ul>
+</t:if>
+
+<t:if test="isAutoLogin()" >
+<h2> <font color="red"> Auto Login Is On </font> </h2>
+</t:if>
+
+</div>
+
+<div class="menubottom"> </div>
+</div>
+
+<div style="clear:both;"> </div>
+
+</div>
+
+<div id="bottom"> </div>
+
+<div id="footer">
+&copy; Copyright 2007 by <a href="#">You</a> All rights reserved. | Design by <a href="http://www.minimalistic-design.net">Minimalistic Design</a>
+</div>
+</div>
+</body>
+</html>

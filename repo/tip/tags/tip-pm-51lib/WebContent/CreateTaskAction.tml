@@ -1,0 +1,14 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> Previous Actions </h2>
+		<table>
+			<t:loop source="taskActions" value="taskActionItem"> 
+				<tr>
+					<td>${taskActionItem.createdDate}: </td>
+					<td>${taskActionItem.action}</td>
+				</tr>
+			</t:loop>
+		</table>
+	<br/>		
+	<h2> Create Task Action </h2>
+    <t:beaneditform submitlabel="Save Changes" object="taskAction" exclude="createdDate"/>	
+</t:layout>

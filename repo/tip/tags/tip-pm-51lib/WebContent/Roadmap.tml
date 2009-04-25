@@ -1,0 +1,20 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> T.I.P 1.0 </h2>
+	<ul>
+		<li> Task Details </li>
+		<li> Task Action and Comments </li>
+		<li> Update description field</li>
+		<li> Validation for finishing task and point assignment </li>
+		<li> Flexible Quorum Rules </li>
+		<li> User statistics Reports </li>				
+		<li> Decaying period for vote down task</li>				
+	</ul>
+
+	<h2> T.I.P 2.0 </h2>
+	<p> Add Support for Multiple Project 
+	</p>
+	<h2> T.I.P 3.0 </h2>
+	<p> Add Project Management and Integration with the Task management
+	</p>
+
+</t:layout>

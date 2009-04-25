@@ -1,0 +1,26 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> My Profile </h2>
+	 <t:if test="visit.user">
+		name : ${visit.user.username} <br/>
+		current project : 
+		
+		<t:if test="visit.user.currentProject">
+			${visit.user.currentProject.name}<br/>
+			<t:parameter name="else">
+				No Project For This User <br/>
+            </t:parameter>			
+		</t:if>
+		<br/>
+		Your Current Point : ${visit.user.currentprofile.totalpoint}
+		<br/>
+		You are :
+	 	<t:if test="visit.user.currentprofile.ableToVote" negate="true"> <em> Not </em></t:if>
+	 	Able To Vote ! 
+	 	<br/>
+
+	 		You have ${visit.user.currentprofile.accesslevel} Level Access <br/>
+
+		Last login ${visit.user.lastLogin}
+
+	</t:if>	
+</t:layout>
