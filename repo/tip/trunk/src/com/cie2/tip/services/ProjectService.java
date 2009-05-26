@@ -82,4 +82,8 @@ public class ProjectService {
 	public Project load(Long id) {
     	return (Project) _session.load(Project.class, id);    			
 	}
+	
+	public List getAllProject() {
+		return _session.createCriteria(Project.class).list();
+	}
 }

@@ -15,7 +15,7 @@
 <div id="navigation">
 <ul>
 <li><a href="MyProfile">Home</a></li> 
-<li><a href="userpage">Projects</a></li>
+<li><a href="ProjectList">Projects</a></li>
 <li><a t:type="pagelink" page="Timeline">Timeline</a></li> 
 <li><a t:type="pagelink" page="MyGrid">Example Grid</a></li> 
 <li><a t:type="actionlink" t:id="LogOut" href="#">Log Out</a></li>

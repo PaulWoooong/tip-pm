@@ -1,0 +1,8 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2> List of Available Project </h2>
+	
+	
+	<table t:type="grid" t:source="projects" t:row="project" t:pagerPosition="both"
+		>[Grid here]
+	</table>
+</t:layout>
