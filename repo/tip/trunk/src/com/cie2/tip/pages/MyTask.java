@@ -1,12 +1,11 @@
 package com.cie2.tip.pages;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Retain;
 import org.apache.tapestry5.beaneditor.BeanModel;
+import org.apache.tapestry5.grid.GridDataSource;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
@@ -38,9 +37,9 @@ public class MyTask extends CieUserPage {
 	@Inject
 	private TaskService taskService;
 
-	public List<TaskItem> getTaskItems() {
+	public GridDataSource getTaskItems() {
 		User currentUser = getVisit().getUser();
-		return taskService.getWorkedOnTask(currentUser);
+		return taskService.getWorkedOnTaskInGrid(currentUser);
 	}
 
 	// di set ke user, tapi kalo udah multiple project. Tiap project milik user

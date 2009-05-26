@@ -1,16 +1,17 @@
 package com.cie2.tip.services;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.tapestry5.grid.GridDataSource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.cie2.tip.entities.TaskItem;
+import com.cie2.tip.entities.TaskItemDatasource;
 import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.UserTask;
 import com.cie2.tip.entities.TaskItem.TaskStatus;
@@ -119,6 +120,16 @@ public class TaskService {
 				Restrictions.eq("workBy", user)).list();
 	}
 
+
+	public GridDataSource getWorkedOnTaskInGrid(User user) {
+		Query query = _session.createQuery(
+				"select ti from TaskItem as ti where ti.workBy=?")
+		.setParameter(0, user).setParameter(1, false);
+		TaskItemDatasource tid = new TaskItemDatasource(query);
+		return tid;
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<TaskItem> getWorkedOnTask() {
 		return _session.createCriteria(TaskItem.class).add(

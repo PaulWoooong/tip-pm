@@ -14,7 +14,6 @@ import org.apache.tapestry5.services.BeanModelSource;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.TaskItem;
-import com.cie2.tip.entities.User;
 import com.cie2.tip.entities.TaskItem.TaskStatusLimited;
 import com.cie2.tip.services.TaskService;
 

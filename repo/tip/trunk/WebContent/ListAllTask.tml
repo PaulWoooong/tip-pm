@@ -1,7 +1,7 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
-	<h2>${visit.user.username} Task </h2>
+	<h2><a t:type="pagelink" page="myTask">${visit.user.username} Task</a></h2>
 	<table t:type="grid" t:source="myTask" t:row="taskitem" t:model="myTaskModel" t:pagerPosition="both"
-		t:exclude="taskStatus, taskType" t:reorder="title, category">[Grid here]
+		rowsPerPage="3" t:exclude="taskStatus, taskType" t:reorder="title, category">[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	
@@ -16,9 +16,9 @@
         </t:parameter>      
  	</table>  
  	
-	<h2>New Task</h2>
+	<h2><a t:type="pagelink" page="listnewtask">New Task</a></h2>
 	<table t:type="grid" t:source="newTask" t:row="taskitem" t:model="newTaskModel" t:pagerPosition="both"
-		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		rowsPerPage="3" t:exclude="taskType" t:reorder="title, category" >[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	
@@ -32,9 +32,9 @@
 		</t:parameter> 
  	</table>  
 	
-	<h2>Available Task</h2>
+	<h2><a t:type="pagelink" page="listTask">Available Task</a></h2>
 	<table t:type="grid" t:source="availableTask" t:row="taskitem" t:model="availableTaskModel" t:pagerPosition="both"
-		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		rowsPerPage="3" t:exclude="taskType" t:reorder="title, category">[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	
@@ -45,7 +45,7 @@
  	
 	<h2>List In Vote Task</h2>
 	<table t:type="grid" t:source="inVoteTask" t:row="taskitem" t:model="inVoteModel" t:pagerPosition="both"
-		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		t:rowsPerPage="3" t:exclude="taskType" t:reorder="title, category">[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	
@@ -53,7 +53,7 @@
     
     <h2> List Worked On Task </h2>
 	<table t:type="grid" t:source="workedOnTask" t:row="taskitem" t:model="otherModel" t:pagerPosition="both"
-		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		t:rowsPerPage="3" t:exclude="taskType" t:reorder="title, category">[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	
@@ -65,9 +65,9 @@
 		</t:parameter>    			
  	</table> 	
 
-    <h2> List Finished Task </h2>
+    <h2><a t:type="pagelink" page="listFinishedTask">Finished Task</a></h2>
 	<table t:type="grid" t:source="finishedTask" t:row="taskitem" t:model="otherModel" t:pagerPosition="both"
-		t:exclude="taskType" t:reorder="title, category">[Grid here]
+		t:rowsPerPage="3" t:exclude="taskType" t:reorder="title, category">[Grid here]
 		<t:parameter name="categoryCell">
 			${taskItem.category.name}
 		</t:parameter>    	

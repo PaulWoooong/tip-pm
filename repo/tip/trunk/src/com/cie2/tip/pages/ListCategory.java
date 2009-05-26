@@ -12,7 +12,6 @@ import org.hibernate.Session;
 
 import com.cie2.tip.components.base.CieUserPage;
 import com.cie2.tip.entities.Category;
-import com.cie2.tip.entities.TaskItem;
 
 public class ListCategory extends CieUserPage {
 	static Logger logger =

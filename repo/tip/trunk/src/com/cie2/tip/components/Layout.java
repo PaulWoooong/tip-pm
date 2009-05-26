@@ -1,5 +1,8 @@
 package com.cie2.tip.components;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.apache.tapestry5.annotations.IncludeStylesheet;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -44,9 +47,10 @@ public class Layout {
 	}
 	
 	public Boolean isAdmin() {
-		Session tapSession = _requestGlobals.getRequest().getSession(false);		
-		Visit visit = (Visit) tapSession.getAttribute("aso:com.cie2.tip.Visit");
-
+		Session tapSession = _requestGlobals.getRequest().getSession(false);	
+		Visit visit = (Visit) tapSession.getAttribute("sso:com.cie2.tip.Visit");
+		
+		
 		if(visit != null ) {
 			User user = visit.getUser();
 

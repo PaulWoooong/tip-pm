@@ -1,7 +1,7 @@
 package com.cie2.tip.components.base;
 
 import org.apache.log4j.Logger;
-import org.apache.tapestry5.annotations.ApplicationState;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.cie2.tip.Visit;
@@ -16,7 +16,7 @@ public class CieBasePage {
 	static Logger logger =
 	       Logger.getLogger(CieBasePage.class.getName());
 	
-	@ApplicationState(create=false)
+	@SessionState(create=false)
 	private Visit visit;
 		
 	@Inject

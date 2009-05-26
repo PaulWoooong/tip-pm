@@ -46,7 +46,10 @@ public class AppModule
     	binder.bind(UserManagement.class);    	
     	binder.bind(LayoutInfoNotifier.class);
     	binder.bind(StatisticsService.class);
-    	
+
+    	// dummy service for grid, and also remove the item class
+    	binder.bind(ItemService.class);
+
 //    	binder.bind(TaskDAO.class, TaskDAOImpl.class);
         
         // Make bind() calls on the binder object to define most IoC services.

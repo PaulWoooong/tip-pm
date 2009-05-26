@@ -1,6 +1,5 @@
 package com.cie2.tip.components;
 
-import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

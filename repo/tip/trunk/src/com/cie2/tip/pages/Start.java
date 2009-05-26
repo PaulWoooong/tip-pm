@@ -3,9 +3,9 @@ package com.cie2.tip.pages;
 import javax.security.auth.login.LoginException;
 
 import org.apache.log4j.Logger;
-import org.apache.tapestry5.annotations.ApplicationState;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -32,7 +32,7 @@ public class Start {
 	@Component(id="loginForm")
 	private Form _form;
 
-	@ApplicationState(create=false)
+	@SessionState(create=false)
 	private Visit visit;	
 
 //	@InjectPage
