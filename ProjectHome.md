@@ -1,0 +1,1 @@
+An embrio of a simple project management program, that will use some kind of point incentive to motivate the colaborators. Build on top tapestry5 and hibernate
